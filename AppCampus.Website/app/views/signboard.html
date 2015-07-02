@@ -1,0 +1,347 @@
+﻿<section class="content-header">
+    <h1>Signboard</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+            <a href="#/signboards">
+                <i class="fa fa-chart"></i> Signboards
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content signboardcontainer">
+    <div class="row">
+        <div class="slideshow-schedule col-lg-8 col-md-12">
+            <!-- slideshow schedule -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Slideshow Schedule
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="scheduledSlideshows.length==undefined || removingSchedule">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="slideshowScheduleVisible=true" ng-click="slideshowScheduleVisible=!slideshowScheduleVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': slideshowScheduleVisible, 'fa-plus': !slideshowScheduleVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="slideshowScheduleVisible">
+                    <form role="form" name="form" ng-submit="scheduleSlideshow(form)">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="slideshowList">Slideshow:</label>
+                                    <select class="form-control" ng-model="$parent.scheduledSlideshow.slideshowId" ng-options="slideshow.slideshowId as slideshow.name for slideshow in $parent.slideshows" id="slideshowList" required>
+                                        <option selected="selected" disabled="disabled" value="">Please Select</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="start-date">Start date:</label>
+                                    <div class="input-group date date-selector" id="start-date" data-datetimepicker>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        <input type="text"
+                                               class="form-control"
+                                               data-pick12hourformat="false" id="startDate" reformatdate required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-md btn-success" ng-disabled="schedulingSlideshow">
+                                Schedule
+                                &nbsp;<i class="fa fa-spin fa-spinner" ng-class="{'hidden': !$parent.schedulingSlideshow }"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div ng-if="scheduledSlideshows.length==0">
+                        <label class="label label-info">No scheduled slideshows</label>
+                    </div>
+                    </di">
+                    <table class="table table-hover table-bordered" ng-if="scheduledSlideshows.length!=0">
+                        <tbody>
+                            <tr>
+                                <th class="col-xs-8"><strong>Name</strong></th>
+                                <th class="col-xs-2"><strong>Start Date</strong></th>
+                                <th class="col-xs-2"></th>
+                            </tr>
+                            <tr ng-repeat="slideshow in scheduledSlideshows" disabled="true" ng-class="{'warning': slideshow.deleting}">
+                                <td>{{ slideshow.name }}</td>
+                                <td>{{ dateFormatter.formatDate(slideshow.startDate) }}</td>
+                                <td ng-if="slideshow.deleting==undefined">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="" ng-click="unscheduleSlideshow(slideshow)">Remove</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td ng-if="slideshow.deleting!=undefined"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- announcements -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Announcements
+                    </h3>
+
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="announcements.length==undefined || removingAnnouncement">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="announcementsVisible=true" ng-click="announcementsVisible=!announcementsVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': announcementsVisible, 'fa-plus': !announcementsVisible}"></i>
+                        </button>
+                    </div>
+                    <div class="box-tools pull-right">
+                    </div>
+                </div>
+                <div class="box-body table-responsive" ng-if="announcements.length==0 && announcementsVisible">
+                    <label class="label label-info">No announcements assigned to this signboard</label>
+                </div>
+                <div class="box-body" ng-if="announcements.length!==0 && announcementsVisible">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="col-xs-10"><strong>Name</strong></th>
+                                <th class="col-xs-2"></th>
+                            </tr>
+                            <tr ng-repeat="announcement in announcements" ng-class="{'warning': announcement.removing }">
+                                <td>
+                                    <div class="col-xs-1">
+                                        <div class="label" ng-class="{
+                                           'label-danger' : announcement.severity == 'Critical',
+                                           'label-primary': announcement.severity == 'General'
+                                           }">
+                                            {{ announcement.severity }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-10 pull-right">
+                                        {{ announcement.message }}
+                                    </div>
+                                </td>
+                                <td ng-if="announcement.removing==undefined || announcement.removing==false">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="" ng-click="removeAnnouncement(announcement)">Remove</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td ng-if="announcement.removing!=undefined"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="hardware-monitor col-lg-4 col-md-12">
+            <!-- hardware monitor -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Hardware Monitor
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="hardwareResults==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="hardwareVisible=true" ng-click="hardwareVisible=!hardwareVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': hardwareVisible, 'fa-plus': !hardwareVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="hardwareVisible">
+                    <div class="row">
+                        <div class="col-xs-4 text-center" ng-if="hardwareResults" activate-knob><input type="text" value="{{ getDiagnostic('CpuUsagePercentage') }}" class="cpu" data-height="90" data-readonly=true><div class="knob-label">CPU</div></div>
+                        <div class="col-xs-4 text-center" ng-if="hardwareResults" activate-knob><input type="text" value="{{ getDiagnostic('DiskUsagePercentage') }}" class="disk-space" data-width="80" data-height="90" data-readonly=true><div class="knob-label">Disk storage</div></div>
+                        <div class="col-xs-4 text-center" ng-if="hardwareResults" activate-knob><input type="text" value="{{ getDiagnostic('RamUsagePercentage') }}" class="memory" data-width="80" data-height="90" data-readonly=true><div class="knob-label">Memory</div></div>
+
+                        <div class="col-xs-12">
+                            <hr />
+                            <div class="btn btn-md btn-info" ng-click="restartDevice()" ng-disabled="restartingDevice">Restart Device <i ng-class="{'fa fa-spinner fa-spin': restartingDevice }"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- software monitor -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Software
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="hardwareResults==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="softwareVisible=true" ng-click="softwareVisible=!softwareVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': softwareVisible, 'fa-plus': !softwareVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="softwareVisible">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" ng-class="{'active': monitor}"><a ng-click="monitor=true; management=false">Monitor</a></li>
+                        <li role="presentation" ng-class="{'active': management}"><a ng-click="monitor=false; management=true">Management</a></li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <!-- Monitoring -->
+                        <div role="tabpanel" class="tab-pane fade" ng-show="monitor" ng-class="{'active in': monitor}">
+                            <div class="row">
+
+                                <div class="col-xs-9">Last Connection:</div><div class="col-xs-3">
+                                    <div class="label label-md label-success pull-right">
+                                        <span ng-if="diagnostics.diagnosticDate">{{ dateFormatter.formatDate(diagnostics.diagnosticDate) }}</span>
+                                        <span ng-if="!diagnostics.diagnosticDate">No Data</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9">Software Version:</div><div class="col-xs-3">
+                                    <div class="label label-md label-success pull-right">
+                                        <span ng-if="diagnostics.softwareVersion">v{{ diagnostics.softwareVersion}}</span>
+                                        <span ng-if="!diagnostics.softwareVersion">No Data</span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 no-padding" ng-repeat="metric in diagnostics.metrics">
+                                    <div class="col-xs-9">{{ metric.name }}:</div>
+                                    <div class="col-xs-3">
+                                        <div class="label label-md label-success pull-right">{{ metric.value }}</div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-xs-12"><div class="btn btn-md btn-info" ng-click="restartSoftware()">Restart Software</div></div>-->
+                            </div>
+                        </div>
+
+                        <!-- Management -->
+                        <div role="tabpanel" class="tab-pane fade active in" ng-show="management" ng-class="{'active in': management}">
+                            <div class="row">
+                                <!-- Font factor -->
+                                <div class="col-xs-12">
+                                    <form role="form" ng-submit="setFontSizeFactor(form)" name="form">
+                                        <div class="form-group">
+                                            <!--<label for="fontsizefactor">Set font factor:</label>-->
+                                            <input name="fontsizefactor" id="fontsizefactor" ng-model="$parent.fontSizeFactor" class="form-control" required type="number" placeholder="Set font factor"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success" ng-disabled="settingFontFactor">Submit <i ng-class="{'fa fa-spin fa-spinner': settingFontFactor}"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Deploy software-->
+                                <div class="col-xs-12">
+                                    <form role="form" ng-submit="deploySoftware()">
+                                        <div class="form-group">
+                                            <select class="form-control" ng-model="$parent.selectedSoftwareVersion" ng-options="software.version for software in softwares">
+                                                <option value="" disabled selected>Select Software</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button class="btn btn-success" ng-disabled="softwares.length == 0 || $parent.selectedSoftwareVersion==undefined || deployingSoftware">
+                                                Deploy
+                                                <i ng-class="{'fa fa-spin fa-spinner': deployingSoftware}"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Screensaver -->
+                                <div class="col-xs-12">
+                                    <div class="btn btn-primary form-control" ng-click="showScreenSaver()" ng-disabled="showingScreenSaver ||getDiagnostic('IsShowingScreensaver') == 0 ">
+                                        <span ng-if="getDiagnostic('IsShowingScreensaver') == 0">Loading Status</span>
+                                        <span ng-if="getDiagnostic('IsShowingScreensaver') == 'False'">Show Screensaver</span>
+                                        <span ng-if="getDiagnostic('IsShowingScreensaver') == 'True'">Hide Screensaver</span>
+                                        <i ng-class="{'fa fa-spin fa-spinner': showingScreenSaver}"></i>
+                                    </div>
+                                </div>
+                                <!-- Take screenshot -->
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <div class="btn btn-success form-control" ng-click="takeScreenshot()" ng-disabled="takingScreenshot">
+                                        <span>Take Screenshot</span>
+                                        <i ng-class="{'fa fa-spin fa-spinner': takingScreenshot}"></i>
+                                    </div>
+                                </div>
+                                <!-- Show requests -->
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <div class="form-group">
+                                        <button class="btn btn-success form-control" ng-click="showPreviousRequests()">
+                                            Show submitted requests
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/ng-template" id="deleteModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Confirm action:</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">Are you sure you want to remove this item?</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Yes</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    
+    <script type="text/ng-template" id="requestModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">
+                Submitted requests
+            </h3>
+            <ul class="modal-loader newloader" ng-if="loadingData">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="modal-body">
+            <table class="table no-border">
+                <tr>
+                    <th>Request type</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Close</button>
+        </div>
+    </script>
+</section>

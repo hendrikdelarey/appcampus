@@ -1,0 +1,83 @@
+﻿<section class="content-header">
+    <h1>Signboard Software</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Software
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="softwares.length==undefined || loadingSoftware || uploadingSoftware">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="unapprovedVisible=true" ng-click="unapprovedVisible=!unapprovedVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': unapprovedVisible, 'fa-plus': !unapprovedVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body no-padding" ng-if="unapprovedVisible">
+                    <table class="table table-hover">
+                        <tr>
+                            <th class="col-xs-11">Version</th>
+                            <th class="col-xs-1"></th>
+                        </tr>
+                        <tr ng-repeat="software in softwares">
+                            <td>
+                                {{ software.version }}
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                        Action <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="" ng-click="downloadPackage(software)">Download</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="btn btn-success" ng-click="createSoftware()" ng-disabled="uploadingSoftware">Create <i ng-class="{'fa fa-spinner fa-spin': uploadingSoftware }"></i></div>
+        </div>
+    </div>
+    <div id="newResource"></div>
+    <script type="text/ng-template" id="createModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Create Software Version</h3>
+        </div>
+        <form role="form" name="form" ng-submit="ok(form)">
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="version">Version:</label>
+                    <input type="text" id="version" ng-model="software.version" class="form-control" required focus-input pattern="[0-9]{1,3}(.[0-9]{1,3}){1,3}"/>
+                </div>
+                <div class="form-group">
+                    <label for="file">File:</label>
+                    <input type="file" id="file" ng-model="software.file" file-model="myfile" class="form-control" required valid-file />
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" ng-click="ok(form)" value="Create" />
+                <div class="btn btn-warning" ng-click="cancel()">Cancel</div>
+            </div>
+        </form>
+    </script>
+</section>

@@ -1,0 +1,2 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Cloud\bin\Debug\ServiceConfiguration.cscfg
+C:\Workspace\AppCampus\Trunk\AppCampus.Cloud\bin\Debug\ServiceDefinition.csdef

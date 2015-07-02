@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AppCampus.Cloud" schemaVersion="2014-06.2.4" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="AppCampus.PortalApi" vmsize="ExtraSmall">
+    <LocalResources>
+      <LocalStorage name="DiagnosticStore" sizeInMB="4096" cleanOnRoleRecycle="false" />
+    </LocalResources>
+    <ConfigurationSettings>
+      <Setting name="apiurl" />
+      <Setting name="AppCampusContext" />
+      <Setting name="DefaultStorageAccount" />
+      <Setting name="DocumentDbAuthKey" />
+      <Setting name="DocumentDbCollection" />
+      <Setting name="DocumentDbDatabase" />
+      <Setting name="DocumentDbEndPoint" />
+      <Setting name="LoggingStorageAccount" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" />
+    </ConfigurationSettings>
+    <Endpoints>
+      <InputEndpoint name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput" protocol="tcp" port="3389" localPort="*" ignoreRoleInstanceStatus="true" />
+      <InputEndpoint name="PortalHttpsEndpoint" protocol="https" port="4044" certificate="HttpsCertificate" localPort="4044" />
+      <InputEndpoint name="SignboardHttpsEndpoint" protocol="https" port="4049" certificate="HttpsCertificate" localPort="4049" />
+      <InputEndpoint name="WebsiteEndpoint" protocol="http" port="80" localPort="80" />
+      <InputEndpoint name="WebsiteHttpsEndpoint" protocol="https" port="443" certificate="HttpsCertificate" localPort="443" />
+      <InternalEndpoint name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Rdp" protocol="tcp">
+        <FixedPortRange min="3389" max="3389" />
+      </InternalEndpoint>
+    </Endpoints>
+    <Certificates>
+      <Certificate name="HttpsCertificate" storeLocation="LocalMachine" storeName="CA" />
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" storeLocation="LocalMachine" storeName="My" />
+    </Certificates>
+  </WebRole>
+</ServiceDefinition>

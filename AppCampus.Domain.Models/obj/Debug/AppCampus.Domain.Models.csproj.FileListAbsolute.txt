@@ -1,0 +1,11 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\AppCampus.Domain.Models.dll.config
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\AppCampus.Domain.Models.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\AppCampus.Domain.Models.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\Newtonsoft.Json.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\Drumble.DomainDrivenArchitecture.Domain.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\Drumble.ValueObjects.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\bin\Debug\Newtonsoft.Json.xml
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\obj\Debug\AppCampus.Domain.Models.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Models\obj\Debug\AppCampus.Domain.Models.pdb

@@ -1,0 +1,1468 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AppCampus.PortalApi</name>
+    </assembly>
+    <members>
+        <member name="T:AppCampus.PortalApi.Controllers.AnnouncementsController">
+            <summary>
+            Represents the announcements created by a company.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AnnouncementsController.GetAnnouncements(System.Guid)">
+            <summary>
+            Lists all the announcements created by a company.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <returns>A list of Announcements.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AnnouncementsController.GetAnnouncement(System.Guid,System.Guid)">
+            <summary>
+            Retrieves a specific announcement.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="announcementId">The identifier of the announcement.</param>
+            <returns>The announcement model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AnnouncementsController.Put(System.Guid,AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel)">
+            <summary>
+            Updates a company's announcement.
+            </summary>
+            <param name="announcementId">The identifier of the announcement.</param>
+            <param name="model">The announcement input model.</param>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AnnouncementsController.Post(System.Guid,AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel)">
+            <summary>
+            Creates an announcement.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="model">The company input model.</param>
+            <returns>The created announcement.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AnnouncementsController.Delete(System.Guid,System.Guid)">
+            <summary>
+            Delete an announcement.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="announcementId">The identifier of the announcement that you want to delete.</param>
+            <returns>The created announcement.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.AssignedSignboardsController">
+            <summary>
+            Represents the Assigned Signboards for an Announcement.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AssignedSignboardsController.GetAssignedSignboards(System.Guid,System.Guid)">
+            <summary>
+            Retrieves all the Announcements created by a company.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="announcementId">The identifier of the announcement.</param>
+            <returns>The AssignedSignboardModel model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AssignedSignboardsController.PutAssignedSignboards(System.Guid,System.Guid,System.Collections.Generic.ICollection{AppCampus.PortalApi.Models.InputModels.AssignedSignboardInputModel})">
+            <summary>
+            Assigns an announcement to a list of signboards
+            </summary>
+            <param name="companyId">The company input model.</param>
+            <param name="announcementId">The identifier of the announcement.</param>
+            <param name="signboardsToAssign">A list of AssignedSignboard Input Model.</param>
+            <returns>List of AssignedSignboard Model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.AssignedSignboardsController.PostAssignedSignboard(System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.AssignedSignboardInputModel)">
+            <summary>
+            Assigns an announcement to a single signboard
+            </summary>
+            <param name="companyId">The company input model.</param>
+            <param name="announcementId">The identifier of the announcement.</param>
+            <param name="signboardToAssign">The company input model.</param>
+            <returns>The AssignedSignboard Model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.CompaniesController">
+            <summary>
+            Companies represent the multitenant capability of the product.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.CompaniesController.Get(System.Guid)">
+            <summary>
+            Retrieves a company.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <returns>The company model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.CompaniesController.Get">
+            <summary>
+            Lists all companies.
+            </summary>
+            <returns>A list of company models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.CompaniesController.Post(AppCampus.PortalApi.Models.InputModels.CompanyInputModel)">
+            <summary>
+            Creates a company.
+            </summary>
+            <param name="model">The company input model.</param>
+            <returns>The created company.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.ImageController">
+            <summary>
+            Images that are uploaded as resources for the ImageWidget.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ImageController.Get(System.Guid)">
+            <summary>
+            Creates an Image.
+            </summary>
+            <param name="imageId">Image Identifier.</param>
+            <returns>ImageModel that contains the created Image</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ImageController.Post(AppCampus.PortalApi.Models.QueryModels.ImageInputModel)">
+            <summary>
+            Creates an Image.
+            </summary>
+            <param name="image">Base64 Image String</param>
+            <returns>Guid: The Image Identifier</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.OperatorsController">
+            <summary>
+            Operator names that are available for TimetableWidget.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.OperatorsController.Get">
+            <summary>
+            Returns a list of Operators
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.ParameterDefinitionsController">
+            <summary>
+            Parameter definitions define the parameter values required for a widget instance.  Parameter definitions belong to a widget definition.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ParameterDefinitionsController.Get(System.Guid,System.String)">
+            <summary>
+            Retrieves a parameter definition.
+            </summary>
+            <param name="widgetDefinitionId">The identifier of the widget definition.</param>
+            <param name="parameterName">The name of the parameter definition.</param>
+            <returns>The parameter definition model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ParameterDefinitionsController.Get(System.Guid)">
+            <summary>
+            Lists all parameter definitions for a widget definition.
+            </summary>
+            <param name="widgetDefinitionId">The identifier of the widget definition.</param>
+            <returns>A list of parameter definition models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ParameterDefinitionsController.Post(System.Guid,AppCampus.PortalApi.Models.InputModels.ParameterDefinitionInputModel)">
+            <summary>
+            Creates a parameter definition for a widget definition.
+            </summary>
+            <param name="widgetDefinitionId">The identifier of the widget definition.</param>
+            <param name="model">The parameter definition input model.</param>
+            <returns>The created parameter definition model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.ParametersController">
+            <summary>
+            Represents the parameters for a widget. This resource must be used to retrieve the values for an instance of a widget definition.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ParametersController.Get(System.Guid,System.Guid,System.Guid,System.Guid,System.String)">
+            <summary>
+            Retrieves a parameter for a widget.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slideshow's slide.</param>
+            <param name="widgetId">The identifier of the slide's widget.</param>
+            <param name="parameterName">The name of the widget's parameter</param>
+            <returns>The parameter model</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ParametersController.GetParametersByWidgetId(System.Guid,System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Lists the parameters for a widget.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slideshow's slide.</param>
+            <param name="widgetId">The identifier of the slide's widget.</param>
+            <returns>A list of parameter models</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ParametersController.Put(System.Guid,System.Guid,System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.ParameterInputModel)">
+            <summary>
+            Creates a parameter for a widget.
+            If a parameter for the definition already exists it will replace it.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slideshow's slide.</param>
+            <param name="widgetId">The identifier of the slide's widget.</param>
+            <param name="model">The parameter input model.</param>
+            <returns>The created parameter model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.DiagnosticsController">
+            <summary>
+            Signboards represent devices which are to be used to display information (slideshows).
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DiagnosticsController.Get(System.Guid,System.Guid)">
+            <summary>
+            Retrieves the latest of a signboard's diagnostics.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the company's signboard.</param>
+            <returns>The signboard model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DiagnosticsController.Get(System.Guid,System.Guid,System.DateTime,System.Int32)">
+            <summary>
+            Retrieves a signboard's diagnostics.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the company's signboard.</param>
+            <param name="atDate">The date from which to get the diagnostics.</param>
+            <param name="take">The number of recorsd to retrieve.</param>
+            <returns>The signboard model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.RolesController.Get(System.Guid)">
+            <summary>
+            Retrieves a role.
+            </summary>
+            <param name="roleId">The identifier of the role.</param>
+            <returns>The role model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.RolesController.Get">
+            <summary>
+            Lists all roles.
+            </summary>
+            <returns>A list of role models.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.ScheduledSlideshowsController">
+            <summary>
+            A scheduled slideshow is a slideshow that has been assigned to display on a signboard.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ScheduledSlideshowsController.GetAll(System.Guid,System.Guid)">
+            <summary>
+            Get all the scheduled slideshows for a signboard
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the signboard.</param>
+            <returns>A list of all the scheduled slideshows.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ScheduledSlideshowsController.Post(System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.ScheduledSlideshowModel)">
+            <summary>
+            Post a scheduled slideshow to a signboard.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the signboard.</param>
+            <param name="model">Object containing the slideshow and start date of when you want to schedule it.</param>
+            <returns>The scheduled slideshow model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ScheduledSlideshowsController.Delete(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Post a scheduled slideshow to a signboard.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the signboard.</param>
+            <param name="scheduledSlideshowId">The identifier of the scheduled slideshow.</param>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ScheduledSlideshowsController.Get(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Post a scheduled slideshow to a signboard.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the signboard.</param>
+            <param name="scheduledSlideshowId">The identifier of the slideshow.</param>
+            <returns>The scheduled slideshow model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.ScreenshotController">
+            <summary>
+            Screenshot represents a Base64Image string of captured by the device of its screen.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.ScreenshotController.GetScreenshot(System.Guid)">
+            <summary>
+            Retrieves a screenshot of the device.
+            </summary>
+            <param name="screenshotId">The identifier of the screenshot.</param>
+            <returns>The ScreenshotModel.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardLogsController.GetFile(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Get a file for a specific logId
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the signboard.</param>
+            <param name="logId">The identifier of the log.</param>
+            <returns>The file.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.SignboardRequestController">
+            <summary>
+            Requests sent to Signboards
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardRequestController.Get(System.Guid,System.Guid)">
+            <summary>
+            Retrieves a request
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the company's signboard.</param>
+            <returns>List of Signboard Request Models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardRequestController.Get(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Retrieve all the requests for the signboard
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the company's signboard.</param>
+            <param name="requestId">The identifier of the signboards request.</param>
+            <returns>Signboard Request Model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardRequestController.Delete(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Cancels the request.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the company's signboard.</param>
+            <param name="requestId">The identifier of the signboards request.</param>
+            <returns>Signboard Request Model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardRequestController.Post(System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.SignboardRequestInputModel)">
+            <summary>
+            Creates a request from a device.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the signboard.</param>
+            <param name="model">The signboard request input model.</param>
+            <returns>List of Signboard Request Models.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.SlidesController">
+            <summary>
+            Slides represent individual "pages" on a slideshow.  Slides belong to a parent slideshow and cannot exist without it.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlidesController.Get(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Retrieves a slide.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slideshow's slide.</param>
+            <returns>The slide model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlidesController.GetSlidesBySlideshowId(System.Guid,System.Guid)">
+            <summary>
+            Lists all slides belonging to a slideshow.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <returns>A list of slide models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlidesController.PostSlideBefore(System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.SlideInputModel)">
+            <summary>
+            Creates a slide at the position before the referenced slide.
+            </summary>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the referenced slide to insert before.</param>
+            <param name="model">The slide input model.</param>
+            <returns>The created slide model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlidesController.PutSlide(System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.SlideInputModel)">
+            <summary>
+            Updates a slide at the position before the referenced slide.
+            </summary>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the referenced slide to insert before.</param>
+            <param name="model">The slide input model.</param>
+            <returns>The created slide model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlidesController.PostSlide(System.Guid,AppCampus.PortalApi.Models.InputModels.SlideInputModel)">
+            <summary>
+            Creates a slide.
+            </summary>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="model">The slide input model.</param>
+            <returns>The created slide model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlidesController.DeleteSlide(System.Guid,System.Guid)">
+            <summary>
+            Deletes a slide.
+            </summary>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slide to delete.</param>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.SlideshowsController">
+            <summary>
+            A slideshow contains a range of slides that will be displayed on a signboard for a given period of time.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlideshowsController.Get(System.Guid,System.Guid)">
+            <summary>
+            Retrieves a slideshow.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <returns>The slideshow model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlideshowsController.GetByCompanyId(System.Guid)">
+            <summary>
+            Lists all of a company's slideshows.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <returns>A list of slideshow models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlideshowsController.DeleteSlideshow(System.Guid,System.Guid)">
+            <summary>
+            Deletes a slideshow.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlideshowsController.Post(System.Guid,AppCampus.PortalApi.Models.InputModels.SlideshowInputModel)">
+            <summary>
+            Creates a slideshow.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="model">The slideshow input model.</param>
+            <returns>The created slideshow model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlideshowsController.Put(System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.SlideshowInputModel)">
+            <summary>
+            Creates a slideshow.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the slideshow.</param>
+            <param name="model">The slideshow input model.</param>
+            <returns>The created slideshow model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SlideshowsController.MoveSlide(System.Guid,AppCampus.PortalApi.Models.ActionModels.SlideshowUpdateActionModel)">
+            <summary>
+            Move a slide in a slideshow
+            </summary>
+            <param name="model">The slideshow input model.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <returns>The created slideshow model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SoftwareController.Get(System.Guid)">
+            <summary>
+            Retrieves a software version.
+            </summary>
+            <param name="softwareId">The identifier of the software version.</param>
+            <returns>The software version model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SoftwareController.Get">
+            <summary>
+            Lists all software versions.
+            </summary>
+            <returns>A list of software version models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SoftwareController.Post(AppCampus.PortalApi.Models.InputModels.SoftwareInputModel)">
+            <summary>
+            Creates a software version.
+            </summary>
+            <param name="model">The software version input model.</param>
+            <returns>The created software version.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SoftwareController.GetFile(System.Guid)">
+            <summary>
+            Get a file for a specific software version.
+            </summary>
+            <param name="softwareId">The identifier of the software version.</param>
+            <returns>The file.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SoftwareController.PostFile(System.Guid)">
+            <summary>
+            Posts a file, using a MIME multipart (multipart/form-data) request, to a specific software version.
+            </summary>
+            <param name="softwareId">The identifier of the software version.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.StopsController">
+            <summary>
+            Stop names and codes that are available for TimetableWidget.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.StopsController.Get">
+            <summary>
+            Returns a list of Stop Objects
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.Get(System.Guid,System.Guid)">
+            <summary>
+            Retrieves a company's user.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="userId">The identifier of the user.</param>
+            <returns>The user model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.Get(System.Guid)">
+            <summary>
+            Lists all of a company's users.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <returns>A list of user models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.Put(System.Guid,System.Guid,AppCampus.PortalApi.Models.EditModels.UserEditModel)">
+            <summary>
+            Updates a user.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="userId">The identifier of the user.</param>
+            <param name="userModel">The user input model.</param>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.Post(System.Guid,AppCampus.PortalApi.Models.InputModels.UserInputModel)">
+            <summary>
+            Creates a user with autogenerated password.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="userModel">The user input mode.</param>
+            <returns>The created user.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.GetRole(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Retrieves a user's specific role.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="userId">The identifier of the user.</param>
+            <param name="roleId">The identifier of the role.</param>
+            <returns>The user role model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.GetRoles(System.Guid,System.Guid)">
+            <summary>
+            Retrieves a user's roles.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="userId">The identifier of the user.</param>
+            <returns>A list of user role models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.PostRole(System.Guid,AppCampus.PortalApi.Models.InputModels.UserRoleInputModel)">
+            <summary>
+            Assign a role to a user.
+            </summary>
+            <param name="roleModel">The authorisation role.</param>
+            <param name="userId">The identifier of the user.</param>
+            <returns>A list of user role models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.DeleteRole(System.Guid,System.Guid)">
+            <summary>
+            Unassigns a role from a user.
+            </summary>
+            <param name="userId">The identifier of the user.</param>
+            <param name="roleId">The identifier of the role.</param>
+            <returns>A list of user role models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.PutPassword(System.Guid,AppCampus.PortalApi.Models.InputModels.PasswordInputModel)">
+            <summary>
+            Change the user's password.
+            </summary>
+            <param name="userId">The identifier of the user.</param>
+            <param name="model">The password input model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.UsersController.PostPassword(System.Guid)">
+            <summary>
+            Reset the user's password.
+            </summary>
+            <param name="userId">The identifier of the user.</param>
+            <returns></returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.WidgetDefinitionsController">
+            <summary>
+            Widget definitions define the data structure and values behind widget instances.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.WidgetDefinitionsController.Get(System.Guid)">
+            <summary>
+            Retrieves a widget definition.
+            </summary>
+            <param name="widgetDefinitionId">The identifier of the widget definition.</param>
+            <returns>A widget definition model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.WidgetDefinitionsController.Get">
+            <summary>
+            Lists all the widget definitions.
+            </summary>
+            <returns>A list of widget definition models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.WidgetDefinitionsController.Post(AppCampus.PortalApi.Models.InputModels.WidgetDefinitionInputModel)">
+            <summary>
+            Creates a widget definition.
+            </summary>
+            <param name="model">The widget definition input model.</param>
+            <returns>The created widget definition model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.DevicesController">
+            <summary>
+            Devices represent the physical hardware devices that host the signboard software. Devices are identified by their MAC address.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DevicesController.GetByMacAddress(System.Guid,System.String)">
+            <summary>
+            Retrieves a company's device.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="macAddress">The identifier (MAC address) of the device.</param>
+            <returns>The device model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DevicesController.Get(System.Guid)">
+            <summary>
+            Lists all of a company's devices.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <returns>A list of device models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DevicesController.GetByState(System.Guid,AppCampus.Domain.Models.Enums.DeviceState)">
+            <summary>
+            Lists all of a company's devices filtered by device state.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="state">The device state to filter the list by.</param>
+            <returns>A list of device models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DevicesController.PostDeclined(System.Guid,AppCampus.PortalApi.Models.InputModels.DeviceInputModel)">
+            <summary>
+            Declines a device.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="model">The device model.</param>
+            <returns>The declined device.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DevicesController.PostBlocked(System.Guid,AppCampus.PortalApi.Models.InputModels.DeviceInputModel)">
+            <summary>
+            Blocks a device. This prevents the device from further requests.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="model">The device model.</param>
+            <returns>The blocked device.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.DevicesController.Post(System.Guid,AppCampus.PortalApi.Models.InputModels.DeviceInputModel)">
+            <summary>
+            Creates a device. The device will be in a pending state.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="model">The device input model.</param>
+            <returns>The created device model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.WidgetsController">
+            <summary>
+            Widgets contain the all relevant information necessary to display information as defined in the widget definition.
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.WidgetsController.Get(System.Guid,System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Retrieves a widget.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slideshow's slide.</param>
+            <param name="widgetId">The identifier of the slide's widget.</param>
+            <returns>The widget model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.WidgetsController.GetWidgetsBySlideId(System.Guid,System.Guid,System.Guid)">
+            <summary>
+            Lists a slide's widgets.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slideshow's slide.</param>
+            <returns>A list of widget models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.WidgetsController.Post(System.Guid,System.Guid,System.Guid,AppCampus.PortalApi.Models.InputModels.WidgetInputModel)">
+            <summary>
+            Creates a widget on a slide.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="slideshowId">The identifier of the company's slideshow.</param>
+            <param name="slideId">The identifier of the slideshow's slide.</param>
+            <param name="model">The widget input model.</param>
+            <returns>The created widget model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.EditModels.UserEditModel">
+            <summary>
+            The user edit model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.EditModels.UserEditModel.FirstName">
+            <summary>
+            The first name of the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.EditModels.UserEditModel.LastName">
+            <summary>
+            The last name of the user.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel">
+            <summary>
+            The announcement input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel.Message">
+            <summary>
+            The message the announcment will display.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel.Name">
+            <summary>
+            The name of the Announcment.
+            Used as a reference.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel.StartDate">
+            <summary>
+            The date and time the announcement is scheduled to start.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel.EndDate">
+            <summary>
+            The date and time the announcement is scheduled to end.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel.Severity">
+            <summary>
+            The severity of the announcement.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.AnnouncementInputModel.IsActive">
+            <summary>
+            The active state of the announcement.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.AssignedSignboardInputModel">
+            <summary>
+            The AssignedSignboard input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.AssignedSignboardInputModel.SignboardId">
+            <summary>
+            Indentifier of the Signboard you want an announcement to show on
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.CompanyInputModel">
+            <summary>
+            The company input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.CompanyInputModel.Name">
+            <summary>
+            The name of the company.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Controllers.SignboardsController">
+            <summary>
+            Signboards represent devices which are to be used to display information (slideshows).
+            </summary>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardsController.Get(System.Guid,System.Guid)">
+            <summary>
+            Retrieves a signboard.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="signboardId">The identifier of the company's signboard.</param>
+            <returns>The signboard model.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardsController.GetByCompanyId(System.Guid)">
+            <summary>
+            Lists all of a company's signboards.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <returns>A list of signboard models.</returns>
+        </member>
+        <member name="M:AppCampus.PortalApi.Controllers.SignboardsController.Post(System.Guid,AppCampus.PortalApi.Models.InputModels.SignboardInputModel)">
+            <summary>
+            Creates a signboard from a device.
+            </summary>
+            <param name="companyId">The identifier of the company.</param>
+            <param name="model">The signboard input model.</param>
+            <returns>The created signboard model.</returns>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.QueryModels.ImageInputModel">
+            <summary>
+            The image input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.QueryModels.ImageInputModel.Base64Image">
+            <summary>
+            The Base64 image string.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.QueryModels.ImageInputModel.Name">
+            <summary>
+            The Name of the Image.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.ParameterDefinitionInputModel">
+            <summary>
+            The parameter definition input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ParameterDefinitionInputModel.Name">
+            <summary>
+            The name of the parameter definition.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ParameterDefinitionInputModel.DefaultValue">
+            <summary>
+            The default value of the parameter definition.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ParameterDefinitionInputModel.ParameterType">
+            <summary>
+            The type of parameter specified
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.ParameterInputModel">
+            <summary>
+            The parameter input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ParameterInputModel.ParameterName">
+            <summary>
+            The name of the parameter's parameter definition.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ParameterInputModel.Value">
+            <summary>
+            The value of the parameter.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.DeviceInputModel">
+            <summary>
+            The device input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.DeviceInputModel.MacAddress">
+            <summary>
+            The identifier (MAC address) of the device.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.DeviceInputModel.Comment">
+            <summary>
+            The Comment associated with the Device.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.PasswordInputModel">
+            <summary>
+            The password input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.PasswordInputModel.CurrentPassword">
+            <summary>
+            The current password credential for the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.PasswordInputModel.Password">
+            <summary>
+            The new password credential for the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.PasswordInputModel.ConfirmPassword">
+            <summary>
+            Password confirmation.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.SoftwareInputModel">
+            <summary>
+            The software input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SoftwareInputModel.Version">
+            <summary>
+            The version of the software.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SoftwareInputModel.Comment">
+            <summary>
+            A comment describing the version of the software.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.UserRoleInputModel">
+            <summary>
+            The user role input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.UserRoleInputModel.RoleId">
+            <summary>
+            The identifier of a role.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.RoleInputModel">
+            <summary>
+            The role input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.RoleInputModel.RoleId">
+            <summary>
+            The identifier of a role.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.RoleInputModel.RoleName">
+            <summary>
+            The name of a role.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.ScheduledSlideshowModel">
+            <summary>
+            The AssignedSignboard input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ScheduledSlideshowModel.ScheduledSlideshowId">
+            <summary>
+            Indentifier of the ScheduledSlideshow
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ScheduledSlideshowModel.SlideshowId">
+            <summary>
+            Indentifier of the Slideshow assigned to the Signboard
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.ScheduledSlideshowModel.StartDate">
+            <summary>
+            StartDate of the slideshow
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.SignboardInputModel">
+            <summary>
+            The signboard input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SignboardInputModel.Name">
+            <summary>
+            The name of the signboard.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SignboardInputModel.MacAddress">
+            <summary>
+            The identifier of the associated device.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.SignboardRequestInputModel">
+            <summary>
+            The signboard request input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SignboardRequestInputModel.RequestType">
+            <summary>
+            The request type to the Signboard.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SignboardRequestInputModel.Value">
+            <summary>
+            If the request needs a value this is where the value is stored.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.SlideInputModel">
+            <summary>
+            The slide input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SlideInputModel.BackgroundColourHexCode">
+            <summary>
+            The default background colour of the slide.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SlideInputModel.TransitionType">
+            <summary>
+            The type of transition when introducing the slide in the slideshow.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SlideInputModel.DurationInSeconds">
+            <summary>
+            The length of time to display the slide in the slideshow.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SlideInputModel.Name">
+            <summary>
+            The name of the slide.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SlideInputModel.IsActive">
+            <summary>
+            Slide will only display when true.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.SlideshowInputModel">
+            <summary>
+            The slideshow input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.SlideshowInputModel.Name">
+            <summary>
+            The name of the slideshow.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ActionModels.SlideshowUpdateActionModel">
+            <summary>
+            The slideshow action model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ActionModels.SlideshowUpdateActionModel.Operation">
+            <summary>
+            The action you want to perform.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ActionModels.SlideshowUpdateActionModel.SlideId">
+            <summary>
+            The identifier of the slide.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ActionModels.SlideshowUpdateActionModel.ReferencedSlideId">
+            <summary>
+            The identifier of the referenced slide.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.UserInputModel">
+            <summary>
+            The user input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.UserInputModel.Username">
+            <summary>
+            The username of the user represented as an email address.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.UserInputModel.FirstName">
+            <summary>
+            The first name of the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.UserInputModel.LastName">
+            <summary>
+            The last name of the user.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.WidgetDefinitionInputModel">
+            <summary>
+            The widget definition input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.WidgetDefinitionInputModel.Name">
+            <summary>
+            The name of the widget definition.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.InputModels.WidgetInputModel">
+            <summary>
+            The widget input model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.InputModels.WidgetInputModel.WidgetDefinitionId">
+            <summary>
+            The identifier of the widget's widget definition.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel">
+            <summary>
+            The announcement response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.AnnouncementId">
+            <summary>
+            The identifier of the announcement.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.SignboardIds">
+            <summary>
+            A List of all teh SignbordIds that are attached with this announcement.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.Message">
+            <summary>
+            The message the announcment will display.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.Name">
+            <summary>
+            The name of the announcment.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.StartDate">
+            <summary>
+            The date and time the announcement is scheduled to start.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.EndDate">
+            <summary>
+            The date and time the announcement is scheduled to end.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.Severity">
+            <summary>
+            The severity of the announcment.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AnnouncementModel.IsActive">
+            <summary>
+            Enable or disable the announcenent.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.AssignedSignboardModel">
+            <summary>
+            The Assigned Signboard response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.AssignedSignboardModel.SignboardId">
+            <summary>
+            The Identifier of the Signboard that is displaying the announcement.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.CompanyModel">
+            <summary>
+            The company response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.CompanyModel.CompanyId">
+            <summary>
+            The identifier of the company.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.CompanyModel.Name">
+            <summary>
+            The name of the company.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.DeviceModel">
+            <summary>
+            The device response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.DeviceModel.MacAddress">
+            <summary>
+            The identifier (MAC address) of the device.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.DeviceModel.State">
+            <summary>
+            The current device state.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.DeviceModel.LastRequestDate">
+            <summary>
+            Last Requested Date
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.DeviceModel.Comment">
+            <summary>
+            Last Comment associated with the device
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.ErrorModel">
+            <summary>
+            The error response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ErrorModel.Message">
+            <summary>
+            The message explaining the error.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.ImageModel">
+            <summary>
+            The Image response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ImageModel.ImageId">
+            <summary>
+            The identifier of the image.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ImageModel.Base64Image">
+            <summary>
+            The Base64 image string.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.ParameterDefinitionModel">
+            <summary>
+            The parameter definition model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ParameterDefinitionModel.ParameterDefinitionId">
+            <summary>
+            The identifier of the parameter definition.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ParameterDefinitionModel.Name">
+            <summary>
+            The name of the parameter definition.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ParameterDefinitionModel.ParameterType">
+            <summary>
+            The type of the parameter definition.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.ParameterModel">
+            <summary>
+            The parameter model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ParameterModel.ParameterDefinitionId">
+            <summary>
+            The parameter model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ParameterModel.Value">
+            <summary>
+            The value of the parameter.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.ScreenshotModel">
+            <summary>
+            The screenshot response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ScreenshotModel.ScreenshotId">
+            <summary>
+            The unique identifier of the screenshot
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ScreenshotModel.Base64ImageString">
+            <summary>
+            The base 64 string representing the image
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.ScreenshotModel.CreatedDate">
+            <summary>
+            The date and time the screenshot was created.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.SoftwareModel">
+            <summary>
+            The software response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SoftwareModel.SoftwareId">
+            <summary>
+            The identifier of the software.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SoftwareModel.Version">
+            <summary>
+            The version of the software.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SoftwareModel.Comment">
+            <summary>
+            A comment describing the version of the software
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.UserRoleModel">
+            <summary>
+            The user role response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.UserRoleModel.RoleId">
+            <summary>
+            The identifier of a role.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.UserRoleModel.RoleName">
+            <summary>
+            The name of a role.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.RoleModel">
+            <summary>
+            The role response model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.RoleModel.RoleId">
+            <summary>
+            The identifier of a role.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.RoleModel.RoleName">
+            <summary>
+            The name of a role.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.SignboardDiagnosticMetricModel">
+            <summary>
+            The signboard diagnostic metric model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardDiagnosticMetricModel.Name">
+            <summary>
+            The name of the metric.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardDiagnosticMetricModel.Value">
+            <summary>
+            The value of the metric.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.SignboardDiagnosticModel">
+            <summary>
+            The signboard diagnostic model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardDiagnosticModel.DiagnosticDate">
+            <summary>
+            The date of capture.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardDiagnosticModel.SoftwareVersion">
+            <summary>
+            The version of software hosted on the device at the date of capture.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardDiagnosticModel.Metrics">
+            <summary>
+            The diagnostic metrics at the date of capture.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.SignboardModel">
+            <summary>
+            The signboard model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardModel.SignboardId">
+            <summary>
+            The identifier of the signboard.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardModel.Name">
+            <summary>
+            The name of the signboard.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardModel.MacAddress">
+            <summary>
+            The MAC address of the device which the signboard is associated.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardRequestModel.RequestId">
+            <summary>
+            The identifier of the request.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardRequestModel.RequestType">
+            <summary>
+            The type of the request.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardRequestModel.Value">
+            <summary>
+            The value if the request needs a value.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardRequestModel.State">
+            <summary>
+            The state of the request.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SignboardRequestModel.CreatedDate">
+            <summary>
+            The created date of the request.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.SlideModel">
+            <summary>
+            The slide model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideModel.SlideId">
+            <summary>
+            The identifier of the slide.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideModel.Name">
+            <summary>
+            The name of the slide.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideModel.BackgroundColourHexCode">
+            <summary>
+            The default background colour of the slide.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideModel.TransitionType">
+            <summary>
+            The type of transition when introducing the slide in the slideshow.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideModel.DurationInSeconds">
+            <summary>
+            The length of time to display the slide in the slideshow.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideModel.IsActive">
+            <summary>
+            Slide will only appear on slideshow if set to true.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.SlideshowModel">
+            <summary>
+            The slideshow model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideshowModel.SlideshowId">
+            <summary>
+            The identifier of the slideshow.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.SlideshowModel.Name">
+            <summary>
+            The name of the slideshow.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.UserModel">
+            <summary>
+            The user model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.UserModel.UserId">
+            <summary>
+            The identifier of the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.UserModel.UserName">
+            <summary>
+            The username of the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.UserModel.FirstName">
+            <summary>
+            The first name of the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.UserModel.LastName">
+            <summary>
+            The last name of the user.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.UserModel.Password">
+            <summary>
+            The system-generated password. ONLY available in debug build for use by integration tests.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.WidgetDefinitionModel">
+            <summary>
+            The widget definition model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.WidgetDefinitionModel.WidgetDefinitionId">
+            <summary>
+            The identifier of the widget definition.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.WidgetDefinitionModel.Name">
+            <summary>
+            The name of the widget definition.
+            </summary>
+        </member>
+        <member name="T:AppCampus.PortalApi.Models.ResponseModels.WidgetModel">
+            <summary>
+            The widget model.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.WidgetModel.WidgetId">
+            <summary>
+            The identifier of the widget.
+            </summary>
+        </member>
+        <member name="P:AppCampus.PortalApi.Models.ResponseModels.WidgetModel.WidgetDefinitionId">
+            <summary>
+            The identifier of the widget's widget definition.
+            </summary>
+        </member>
+    </members>
+</doc>

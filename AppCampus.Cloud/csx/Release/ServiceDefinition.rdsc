@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<serviceContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" dslVersion="1.0.0.0" name="AppCampus.CloudContract" xmlns="http://schemas.microsoft.com/dsltools/Contracts">
+  <elements>
+    <interface name="AppCampus.PortalApi:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput" url="tcp://*:3389" />
+    <interface name="AppCampus.PortalApi:PortalHttpsEndpoint" url="https://*:4044" />
+    <interface name="AppCampus.PortalApi:SignboardHttpsEndpoint" url="https://*:4049" />
+    <interface name="AppCampus.PortalApi:WebsiteEndpoint" url="http://*:80" />
+    <interface name="AppCampus.PortalApi:WebsiteHttpsEndpoint" url="https://*:443" />
+  </elements>
+</serviceContract>

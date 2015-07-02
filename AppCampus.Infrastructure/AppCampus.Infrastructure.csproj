@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F78281D4-B11D-4A7D-AA63-EDA6214780BA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppCampus.Infrastructure</RootNamespace>
+    <AssemblyName>AppCampus.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <CodeAnalysisRuleSet>..\..\..\BuildActivities\CodeAnalysis\CodeAnalysisRuleSet.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Documents.Client">
+      <HintPath>..\packages\Microsoft.Azure.Documents.Client.0.9.2-preview\lib\net40\Microsoft.Azure.Documents.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.1.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.3\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.3\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.2.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RefactorThis.GraphDiff">
+      <HintPath>..\packages\RefactorThis.GraphDiff.2.0.1\lib\RefactorThis.GraphDiff.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.3\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Drumble.CachedConfigurationManager, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Drumble.CachedConfigurationManager.1.0.2\lib\net45\Drumble.CachedConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Drumble.DomainDrivenArchitecture.Domain, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Drumble.DomainDrivenArchitecture.Domain.4.0.0-prerelease2\lib\net45\Drumble.DomainDrivenArchitecture.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Drumble.DomainDrivenArchitecture.Infrastructure, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Drumble.DomainDrivenArchitecture.Infrastructure.4.0.0-prerelease4\lib\net451\Drumble.DomainDrivenArchitecture.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Drumble.Logging, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Drumble.Logging.3.0.0\lib\net451\Drumble.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Drumble.ValueObjects">
+      <HintPath>..\packages\Drumble.ValueObjects.1.0.1\lib\net451\Drumble.ValueObjects.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\LoggingComponent.cs" />
+    <Compile Include="Components\ScreenshotComponent.cs" />
+    <Compile Include="Components\DrumbleComponent.cs" />
+    <Compile Include="Events\EmailNewUser.cs" />
+    <Compile Include="Events\EmailPasswordChange.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Models\AppCampusContext.cs" />
+    <Compile Include="Models\DeviceLog.cs" />
+    <Compile Include="Models\LogFile.cs" />
+    <Compile Include="Models\Mapping\DeviceLogMap.cs" />
+    <Compile Include="Models\Mapping\LogFileMap.cs" />
+    <Compile Include="Models\Mapping\RoleMap.cs" />
+    <Compile Include="Models\Mapping\ScreenshotMap.cs" />
+    <Compile Include="Models\Mapping\SignboardRequestMap.cs" />
+    <Compile Include="Models\Mapping\SoftwareFileMap.cs" />
+    <Compile Include="Models\Mapping\SoftwareMap.cs" />
+    <Compile Include="Models\Mapping\UserClaimMap.cs" />
+    <Compile Include="Models\Mapping\UserMap.cs" />
+    <Compile Include="Models\Mapping\UserRoleMap.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Screenshot.cs" />
+    <Compile Include="Models\SignboardRequest.cs" />
+    <Compile Include="Models\Software.cs" />
+    <Compile Include="Models\SoftwareFile.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserClaim.cs" />
+    <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Modules\Authentication\RoleStore.cs" />
+    <Compile Include="Modules\Authentication\UserStore.cs" />
+    <Compile Include="Components\ImageComponent.cs" />
+    <Compile Include="Components\DiagnosticsComponent.cs" />
+    <Compile Include="Components\TimetableComponent.cs" />
+    <Compile Include="Models\Announcement.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\DeviceState.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Mapping\AnnouncementMap.cs" />
+    <Compile Include="Models\Mapping\CompanyMap.cs" />
+    <Compile Include="Models\Mapping\DeviceMap.cs" />
+    <Compile Include="Models\Mapping\DeviceStateMap.cs" />
+    <Compile Include="Models\Mapping\ImageMap.cs" />
+    <Compile Include="Models\Mapping\ParameterDefinitionMap.cs" />
+    <Compile Include="Models\Mapping\ParameterMap.cs" />
+    <Compile Include="Models\Mapping\SignboardAnnouncementMap.cs" />
+    <Compile Include="Models\Mapping\SignboardMap.cs" />
+    <Compile Include="Models\Mapping\SignboardSlideshowMap.cs" />
+    <Compile Include="Models\Mapping\SlideMap.cs" />
+    <Compile Include="Models\Mapping\SlideshowMap.cs" />
+    <Compile Include="Models\Mapping\SlideWidgetMap.cs" />
+    <Compile Include="Models\Mapping\WidgetDefinitionMap.cs" />
+    <Compile Include="Models\Mapping\WidgetMap.cs" />
+    <Compile Include="Models\Parameter.cs" />
+    <Compile Include="Models\ParameterDefinition.cs" />
+    <Compile Include="Models\Signboard.cs" />
+    <Compile Include="Models\SignboardAnnouncement.cs" />
+    <Compile Include="Models\SignboardSlideshow.cs" />
+    <Compile Include="Models\Slide.cs" />
+    <Compile Include="Models\Slideshow.cs" />
+    <Compile Include="Models\SlideWidget.cs" />
+    <Compile Include="Models\Widget.cs" />
+    <Compile Include="Models\WidgetDefinition.cs" />
+    <Compile Include="Modules\Diagnostics\DiagnosticMetricMappingAttribute.cs" />
+    <Compile Include="Modules\Diagnostics\DiagnosticsTableEntity.cs" />
+    <Compile Include="Modules\Diagnostics\DiagnosticsTableStorage.cs" />
+    <Compile Include="Modules\DocumetDbRepository\Models\Company.cs" />
+    <Compile Include="Modules\DocumetDbRepository\Repositories\DocumentDbRepository.cs" />
+    <Compile Include="Modules\Email\EmailClient.cs" />
+    <Compile Include="Modules\LogFiles\LogFileStorage.cs" />
+    <Compile Include="Modules\SoftwareFiles\SoftwareFileStorage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AnnouncementAggregate\AnnouncementMapper.cs" />
+    <Compile Include="Repositories\AnnouncementAggregate\AnnouncementRepository.cs" />
+    <Compile Include="Repositories\DeviceAggregate\DeviceRepository.cs" />
+    <Compile Include="Repositories\DeviceAggregate\DeviceMapper.cs" />
+    <Compile Include="Repositories\DeviceLogAggregate\DeviceLogMapper.cs" />
+    <Compile Include="Repositories\DeviceLogAggregate\DeviceLogRepository.cs" />
+    <Compile Include="Repositories\SoftwareAggregate\SoftwareMapper.cs" />
+    <Compile Include="Repositories\SoftwareAggregate\SoftwareRepository.cs" />
+    <Compile Include="Repositories\WidgetDefinitionAggregate\WidgetDefinitionMapper.cs" />
+    <Compile Include="Repositories\WidgetDefinitionAggregate\WidgetDefinitionRepository.cs" />
+    <Compile Include="Repositories\CompanyAggregate\CompanyMapper.cs" />
+    <Compile Include="Repositories\CompanyAggregate\CompanyRepository.cs" />
+    <Compile Include="Repositories\SignboardAggregate\SignboardMapper.cs" />
+    <Compile Include="Repositories\SignboardAggregate\SignboardRepository.cs" />
+    <Compile Include="Repositories\SlideshowAggregate\SlideshowMapper.cs" />
+    <Compile Include="Repositories\SlideshowAggregate\SlideshowRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
+    <None Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppCampus.Domain.Interfaces\AppCampus.Domain.Interfaces.csproj">
+      <Project>{150a806e-2373-4cac-bef9-32ceabeb4345}</Project>
+      <Name>AppCampus.Domain.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppCampus.Domain.Models\AppCampus.Domain.Models.csproj">
+      <Project>{062d7fca-d367-4fe6-8993-c69457059623}</Project>
+      <Name>AppCampus.Domain.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppCampus.Domain.Services\AppCampus.Domain.Services.csproj">
+      <Project>{1e5ab479-e216-4267-8a9c-6bd45ab76863}</Project>
+      <Name>AppCampus.Domain.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

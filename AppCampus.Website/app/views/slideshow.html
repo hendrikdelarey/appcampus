@@ -1,0 +1,266 @@
+﻿<section class="content-header">
+    <h1>Slideshow: <span ng-model="slideshow.name"></span>{{ slideshowName }}</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+            <a href="#/slideshows">
+                <i class="fa fa-laptop"></i> Slideshows
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content">
+    <!-- slideshow name -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Details:</h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="slideshow.name==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="slideshowNameVisible=true" ng-click="slideshowNameVisible=!slideshowNameVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': slideshowNameVisible, 'fa-plus': !slideshowNameVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="slideshowNameVisible">
+                    <form role="form" ng-submit="updateslideshowName(form)" name="form">
+                        <div class="form-group">
+                            <label for="slideshowname">Slideshow Name:</label>
+                            <input type="text" class="form-control" ng-model="slideshow.name" id="slideshowname" required />
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-md btn-success" ng-disabled="$parent.updatingSlideshowName" ng-init="$parent.updatingSlideshowName=false;">
+                                Update
+                                &nbsp;<span class="fa fa-spin fa-spinner" ng-class="{'hidden': !$parent.updatingSlideshowName}"></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- slides box -->
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Slides</h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="slides==undefined || slideActivity">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="slidesVisible=true" ng-click="slidesVisible=!slidesVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': slidesVisible, 'fa-plus': !slidesVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="slidesVisible">
+                    <form role="form" name="slidesForm" ng-submit="createNewSlide(slidesForm)">
+                        <div class="form-group">
+                            <label>Slide Name:</label>
+                            <input type="text" class="form-control" ng-model="$parent.newSlideName" required />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success" ng-disabled="$parent.createNewSlideLoader" ng-init="$parent.createNewSlideLoader=false">
+                                Create
+                                &nbsp;<span class="fa fa-spin fa-spinner" ng-class="{'hidden': !$parent.createNewSlideLoader}"></span>
+                            </button>
+                        </div>
+                    </form>
+                    <br />
+                    <table class="table table-hover table-bordered">
+                        <tbody>
+                            <tr class="">
+                                <th class="col-xs-6">Slide Name</th>
+                                <th class="col-xs-5">Active</th>
+                                <th class="col-xs-1"></th>
+                            </tr>
+
+                            <tr class="" ng-repeat="slide in slides" ng-class="{'warning': slide.deleting }">
+                                <td>{{ slide.name }}</td>
+                                <td>
+                                    <span ng-if="slide.isActive==false" class="highlight-user-red">No</span>
+                                    <span ng-if="slide.isActive==true">Yes</span>
+                                </td>
+                                <td class="" ng-if="!slide.actionHappening">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu" ng-if="!actionHappening">
+                                            <li><a ng-click="editSlide(slide)" href="">Edit</a></li>
+                                            <li><a ng-click="moveSlideUp($index, slide)" href="">Move Up</a></li>
+                                            <li><a ng-click="moveSlideDown($index, slide)" href="">Move Down</a></li>
+                                            <li><a ng-click="removeSlide(slide)" href="">Remove</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- slide details -->
+        <div class="col-xs-12" ng-init="slideDetailsVisible=false" ng-hide="!slideDetailsVisible" ng-show="slideDetailsVisible">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">{{ selectedSlide.name }}</h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="parametersLoading">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-click="slideDetailsVisible=false; alreadyHasWidget=false">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <form role="form" name="form" ng-submit="updateSlideDetails(form)">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="selectedSlideName">Slide Name:</label>
+                            <input type="text" id="selectedSlideName" ng-model="selectedSlide.name" class="form-control" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="selectedSlideWidget">Widget Definition:</label>
+                            <select ng-model="selectedSlideWidget" ng-options="widgetDefinition.name for widgetDefinition in widgetDefinitions track by widgetDefinition.widgetDefinitionId" class="form-control" id="selectedSlideWidget" ng-disabled="alreadyHasWidget" required>
+                                <option selected="selected" disabled="disabled" value="">Please Select</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="selectedSlideDuration">Transition Duration (in seconds):</label>
+                            <input type="number" ng-model="selectedSlide.durationInSeconds" class="form-control" id="selectedSlideDuration" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="colorpickers">Slide Background Colour:</label>
+                            <input type="text" class="form-control" ng-model="selectedSlide.backgroundColourHexCode" color-picker format='rgb' alpha="yes" swatch="false" swatch-pos="right" pos="right" case="upper" id="colorpickers" required>
+                        </div>
+                        <div class="checkbox">
+                            <label ng-disabled="!parametersSet">
+                                <input type="checkbox" ng-model="selectedSlide.isActive" ng-disabled="!parametersSet" ng-init="parametersSet=false;" /> Enabled?
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" ng-disabled="updatingWidgetParameters">Update <i ng-class="{'fa fa-spin fa-spinner': updatingWidgetParameters }"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- widget parameters -->
+        <div class="col-xs-12" ng-hide="!alreadyHasWidget" ng-show="alreadyHasWidget">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Parameters</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <table class="table table-hover table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th class="col-xs-6">Paramater Name</th>
+                                        <th class="col-xs-5">Value</th>
+                                        <th class="col-xs-1"></th>
+                                    </tr>
+                                    <tr ng-repeat="parameterDefinition in parameterDefinitions" class="">
+                                        <td>{{ parameterDefinition.name }}</td>
+                                        <td ng-class="{ 'highlight-user-red': parameterDefinition.value == 'Not Set' }">{{ parameterDefinition.value }}</td>
+                                        <td class="table-bordered">
+                                            <div class="btn-group">
+                                                <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                                    Action <span class="caret"></span>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" ng-if="!parametersLoading">
+                                                    <li><a ng-click="editParameter(parameterDefinition.name, parameterDefinition.value)" href="">Edit</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <!-- Modal window for editing parameters-->
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">{{ parameterName }}</h3>
+                    <ul class="modal-loader newloader" ng-if="loadingData">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <form ng-submit="ok(form)" name="form" role="form">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label>{{ parameterName }} : <span class="label label-danger" ng-bind="warningText"></span></label>
+                            <input type="number" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='PollingIntervalInSeconds'" focus-input required />
+                            <input type="number" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='NumResults'" focus-input required />
+                            <input type="number" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='WalkingDistanceToStopInSeconds'" focus-input required />
+                            <input type="text" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='Text'" focus-input required />
+                            <input type="number" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='FontSize'" focus-input required />
+                            <!--<input type="text" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='TextColour'" focus-input required />-->
+                            <input type="text" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='TextColour'" required color-picker format='rgb' alpha="yes" swatch="false" swatch-pos="right" pos="right" case="upper" id="colourpicker"/>
+                            <input type="text" ng-model="$parent.parameterNameValue" class="form-control" ng-if="parameterName=='OperatorDisplayName'" focus-input required />
+                            <select ng-disabled="$parent.loadingData" ng-options="operator.name as operator.name for operator in operators" class="form-control" ng-model="$parent.parameterNameValue" ng-if="parameterName=='OperatorName'" required>
+                                <option selected="selected" disabled="disabled" value="">Please Select</option>
+                            </select>
+                            <select class="form-control" ng-model="$parent.parameterNameValue" ng-if="parameterName=='ImageFill'">
+                                <option selected="selected" disabled="disabled" value="">Please Select</option>
+                                <option value="Scale">Scale</option>
+                                <option value="Stretch">Stretch</option>
+                            </select>
+                            <div ng-if="parameterName=='ImageIdentifier'">
+                                <input type="file" ng-model="$parent.image" class="form-control" base-sixty-four-input />
+                            </div>
+                            <select ng-disabled="$parent.loadingData" ng-options="stop.code as stop.name +  ' [' + stop.code + ']' for stop in stops |filter: { operator:operator}" class="form-control" ng-model="$parent.parameterNameValue" ng-if="parameterName=='StopIdentifier'" required>
+                                <option selected="selected" disabled="disabled" value="">Please Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">OK</button>
+                        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                    </div>
+                </form>
+            </script>
+
+            <!-- Modal window for deleting items -->
+            <script type="text/ng-template" id="deleteModal.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Confirm action:</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">Are you sure you want to remove this item?</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">Yes</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+        </div>
+    </div>
+    <!-- End of row -->
+</section>

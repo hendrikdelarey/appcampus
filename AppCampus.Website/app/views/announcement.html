@@ -1,0 +1,177 @@
+﻿<section class="content-header">
+    <h1>Announcement: {{ announcement.name }}</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+            <a href="#/announcements">
+                <i class="fa fa-edit"></i> Announcements
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Announcement
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="announcement==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="unapprovedVisible=true" ng-click="unapprovedVisible=!unapprovedVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': unapprovedVisible, 'fa-plus': !unapprovedVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="unapprovedVisible">
+                    <form role="form" name="announcementForm" ng-submit="$parent.saveAnnouncement(announcementForm)">
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-xs-12" show-errors>
+                                <div class="form-group">
+                                    <label for="announcementName">Name:</label>
+                                    <input class="form-control" type="text" ng-model="announcement.name" id="announcementName" name="announcementName" ng-required="true" placeholder="Enter name" />
+                                    <span class="help-block hide">Announcement name is required.</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12" show-errors>
+                                <div class="form-group">
+                                    <label for="announcementSeverity">Type:</label>
+                                    <select ng-model="announcement.severity" class="form-control" ng-options="type.name as type.name for type in types" id="announcementSeverity" name="announcementSeverity" ng-required="true">
+                                        <option value="" disabled selected>Select severity</option>
+                                    </select>
+                                    <span class="help-block hide">Announcement severity is required.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 no-padding" show-errors>
+                            <div class="form-group">
+                                <label for="announcementMessage">Announcement Text:</label>
+                                <input type="text" class="form-control" ng-model="announcement.message" id="announcementMessage" name="announcementMessage" placeholder="Enter announcment text" ng-required="true" />
+                                <span class="help-block hide">Announcement text is required.</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="startDate">Start Date:</label>
+                                    <div class="input-group date date-selector" id="start-date" data-datetimepicker>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        <input type="text" class="form-control"
+                                               data-pick12hourformat="false" id="startDate" name="startDate" placeholder="Enter start date" ng-required="true" reformatdate />
+                                    </div>
+                                    <span class="help-block hide">Start date is required.</span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="endDate">End Date:</label>
+                                    <div class="input-group date date-selector" id="end-date" data-datetimepicker>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                        <input type="text" class="form-control"
+                                               data-pick12hourformat="false" id="endDate" name="endDate" ng-required="true" placeholder="Enter end date" reformatdate />
+                                    </div>
+                                    <span class="help-block hide">End date is required.</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" ng-model="announcement.isActive" />Enabled?
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" value="Submit" class="btn btn-primary " ng-click="" ng-disabled="$parent.creatingAnnouncement">
+                                Submit&nbsp;
+                                <i ng-class="{'fa fa-spin fa-spinner': $parent.creatingAnnouncement}"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- assigned signboards-->
+        <div class="col-xs-12" ng-if="hideAssign!=true">
+            <div class="box">
+                <div class="box-header">
+                    <div>
+                        <h3 class="box-title">
+                            Assigned Signboards
+                        </h3>
+                    </div>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="signboards==undefined || removingSignboard || loadingAssigned">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="assignedSignboard=true" ng-click="assignedSignboard=!assignedSignboard">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': assignedSignboard, 'fa-plus': !assignedSignboard}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="assignedSignboard">
+                    <form role="form" ng-submit="assignThisAnnouncementToSelectedSignboard()">
+                        <div class="form-group">
+                            <label for="selectedSignboard">Signboard</label>
+                            <!--<select class="form-control" ng-model="$parent.$parent.selectedSignboard" ng-options="signboard.name for signboard in $parent.signboards | filter:assignedSignboardsFilter"></select>-->
+                            <multiselect class="input-xlarge" multiple="true"
+                                         ng-model="$parent.$parent.selectedSignboard"
+                                         options="signboard.name for signboard in $parent.signboards | filter:assignedSignboardsFilter"
+                                         ></multiselect>
+                        </div>
+                        <div class="form-group">
+                            <div class="btn btn-success" ng-class="{'disabled': !$parent.allowAssigning }" ng-click="assignThisAnnouncementToSelectedSignboard()" ng-disabled="$parent.assigningSignboard">
+                                Assign <i ng-class="{'fa fa-spin fa-spinner': $parent.assigningSignboard }"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-xs-12" ng-if="assignedSignboards.length==0">
+                            <div class="label label-warning">There are no assigned signboards currently</div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-hover" ng-if="!!assignedSignboards.length">
+                        <tbody>
+                            <tr>
+                                <th class="col-xs-9"><strong>Name</strong></th>
+                                <th class="col-xs-3"></th>
+                            </tr>
+                            <tr ng-repeat="signboard in assignedSignboards" ng-class="{'warning': signboard.removing }">
+                                <td>{{ signboard.name }}</td>
+                                <td>
+                                    <div class="btn-group" ng-if="!signboard.removing">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a ng-click="unassignThisAnnouncementFromSelectedSignboard(signboard, $index)" href="">Remove</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

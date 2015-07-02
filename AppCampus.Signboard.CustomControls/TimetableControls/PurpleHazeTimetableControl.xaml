@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="TimetableControls.PurpleHazeTimetableControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+             mc:Ignorable="d" 
+			 x:Name="PurpleHazeTimetable"
+             d:DesignWidth="1920" d:DesignHeight="960">
+    <Viewbox Stretch="Fill">
+		<Grid x:Name="LayoutRoot" Height="836" Width="1920">
+			<Canvas x:Name="PurpleHazeTimetableControl_Copy" HorizontalAlignment="Stretch" VerticalAlignment="Top" ClipToBounds="True" Height="836" Width="Auto" UseLayoutRounding="False">
+				<Path x:Name="TopPurpleLine" Data="F1M1.5,1.5C1.5,1.5 1921,1.5 1921,1.5 1921,1.5 1921,251 1921,251 1921,251 1.5,251 1.5,251 1.5,251 1.5,1.5 1.5,1.5z" Fill="#FF252161" Height="251" Canvas.Left="-14" Width="1935" Stretch="Fill"/>
+
+                <TextBlock x:Name="StopName"         TextTrimming="CharacterEllipsis" Foreground="White" FontSize="100" FontFamily="/Timetable;component/Fonts/#Calibri" TextWrapping="NoWrap" Height="113" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="37"  LineHeight="100" TextAlignment="Left"  Canvas.Top="34"      Width="915"   HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding StopName}" />
+                <TextBlock x:Name="OperatorName"     TextTrimming="CharacterEllipsis" Foreground="White" FontSize="100" FontFamily="/Timetable;component/Fonts/#Calibri" TextWrapping="NoWrap" Height="113" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Right="37" LineHeight="100" Canvas.Top="31.835"  Width="901.5" HorizontalAlignment="Right" VerticalAlignment="Center" Text="{Binding OperatorName}" />
+                <TextBlock x:Name="CurrentTime"      TextTrimming="CharacterEllipsis" Foreground="White" FontSize="65" FontFamily="/Timetable;component/Fonts/#Calibri"  TextWrapping="NoWrap" Height="66" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Right="37" LineHeight="65" TextAlignment="Right"   Canvas.Top="151.25"  Width="288"   VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TimeDisplayString}" />
+                <TextBlock x:Name="WalkingDistance"  TextTrimming="CharacterEllipsis" Foreground="White" FontSize="48" FontFamily="/Timetable;component/Fonts/#Calibri"  TextWrapping="NoWrap" Height="66" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" Canvas.Left="37"  LineHeight="65" TextAlignment="Left"    Canvas.Top="151.25"  Width="817.5" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding WalkingTime}" />
+                
+                <DataGrid Canvas.Left="-1" Canvas.Top="248" Height="712" Width="1927" DataContext="{Binding}" AutoGenerateColumns="False" ItemsSource="{Binding TimetableEntryModelCollection}" VerticalGridLinesBrush="#00000000" FontFamily="/Timetable;component/Fonts/#Calibri" FontSize="64" HeadersVisibility="None" AlternatingRowBackground="#FFE6E6E6" Foreground="#FF252161">
+					<DataGrid.Columns>
+						<DataGridTextColumn Width="*" Binding="{Binding DepartureTimeDisplayString}" Header="ArrivalTime" CanUserSort="False" CanUserReorder="False" CanUserResize="False" Foreground="#FF252161" FontSize="64" FontFamily="/Timetable;component/Fonts/#Calibri" IsReadOnly="True">
+							<DataGridTextColumn.ElementStyle>
+								<Style TargetType="{x:Type TextBlock}">
+									<Setter Property="Margin" Value="92,0,0,0" />
+								</Style>
+							</DataGridTextColumn.ElementStyle>
+						</DataGridTextColumn>
+						<DataGridTextColumn Width="*" FontStyle="Italic" Binding="{Binding Destination}" Header="DestinationStop">
+							<DataGridTextColumn.ElementStyle>
+								<Style TargetType="{x:Type TextBlock}">
+									<Setter Property="Margin" Value="0,0,92,0" />
+									<Setter Property="HorizontalAlignment" Value="Right" />
+								</Style>
+							</DataGridTextColumn.ElementStyle>
+						</DataGridTextColumn>
+					</DataGrid.Columns>
+				</DataGrid>
+			</Canvas>
+		</Grid>
+	</Viewbox>
+</UserControl>

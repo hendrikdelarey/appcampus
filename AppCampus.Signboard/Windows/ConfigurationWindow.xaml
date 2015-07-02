@@ -1,0 +1,8 @@
+﻿<Window x:Class="AppCampus.Signboard.Windows.ConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ConfigurationWindow" Height="220" Width="415" WindowStyle="SingleBorderWindow" ResizeMode="CanMinimize">
+    <Grid>
+
+    </Grid>
+</Window>

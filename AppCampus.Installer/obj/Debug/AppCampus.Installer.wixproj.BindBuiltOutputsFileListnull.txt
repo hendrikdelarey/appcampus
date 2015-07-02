@@ -1,0 +1,2 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Installer\bin\Debug\AppCampus.Installer.msi
+C:\Workspace\AppCampus\Trunk\AppCampus.Installer\bin\Debug\AppCampus.Installer.wixpdb

@@ -1,0 +1,8 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\AppCampus.Signboard.exe
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\AppCampus.Signboard.exe.config
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\Resources\CopyImage.png
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\jarvis.bat
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\Resources\RefreshGif.gif
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\RestSharp.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\Screensaver.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard\bin\Debug\TimetableControls.dll

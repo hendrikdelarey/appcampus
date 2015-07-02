@@ -1,0 +1,11 @@
+<div class="btn-group" style="width: 100%">
+  <button type="button" class="btn btn-default dropdown-toggle form-control" ng-click="toggleSelect()" ng-disabled="disabled" ng-class="{'error': !valid()}" style="width: 100%; text-align:left">
+    {{header}} <span class="caret pull-right" style="margin-top:7px;"></span>
+  </button>
+  <ul class="dropdown-menu" style="width: 100%">
+    <li ng-repeat="i in items">
+      <a ng-click="select(i); focus()">
+        <i class='glyphicon' ng-class="{'glyphicon-ok': i.checked, 'empty': !i.checked}"></i> {{i.label}}</a>
+    </li>
+  </ul>
+</div>

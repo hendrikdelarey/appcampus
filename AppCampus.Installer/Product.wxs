@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" 
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+	<Product Id="*" Name="AppCampus.Signboard" Language="1033" Version="1.0.15" Manufacturer="DrumbleDore" UpgradeCode="2a55a85b-231c-4e48-a0e1-266dde04ff41">
+		<Package
+      InstallerVersion="200" 
+      Compressed="yes" 
+      InstallScope="perMachine" />
+		<MajorUpgrade       
+      AllowSameVersionUpgrades="no" 
+      AllowDowngrades="yes" />
+    <Media Id="1"
+      Cabinet="media1.cab"
+      EmbedCab="yes" />
+    <Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="ProgramFilesManufacturerFolder" Name="!(bind.property.Manufacturer)">
+          <Directory Id="InstallFolder" Name="AppCampus.Signboard">
+            <Directory Id="ResourcesFolder" Name="Resources"></Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Feature Id="ProductFeature" Title="AppCampus" Level="1">
+			<ComponentRef Id="AppCampus.Signboard.exe" />
+      <ComponentRef Id="AppCampus.Signboard.exe.config" />
+      <ComponentRef Id="RestSharp.dll" />
+      <ComponentRef Id="Screensaver.dll" />
+      <ComponentRef Id="jarvis.bat" />
+      <ComponentRef Id="TimetableControls.dll" />
+      <ComponentRef Id="CopyImage.png" />
+      <ComponentRef Id="RefreshGif.gif" />
+      <ComponentRef Id="RegistryEntries" />
+		</Feature>
+    <CustomAction Id="LaunchApp" Impersonate="yes" Directory="InstallFolder" ExeCommand="[SystemFolder]cmd.exe /C AppCampus.Signboard.exe" Return="asyncNoWait" />
+    <InstallExecuteSequence>
+      <Custom Action="LaunchApp" After="InstallFinalize" />
+    </InstallExecuteSequence>
+	</Product>
+	<Fragment>
+    <DirectoryRef Id="InstallFolder">
+      <Component Id="AppCampus.Signboard.exe">
+        <File Source="$(var.AppCampus.Signboard.TargetPath)" />
+      </Component>
+      <Component Id="AppCampus.Signboard.exe.config">
+        <File Id="AppCampus.Signboard.exe.config" Source="$(var.AppCampus.Signboard.TargetDir)" />
+      </Component>
+      <Component Id="RestSharp.dll">
+        <File Id="RestSharp.dll" Source="$(var.AppCampus.Signboard.TargetDir)" />
+      </Component>
+      <Component Id="Screensaver.dll">
+        <File Id="Screensaver.dll" Source="$(var.AppCampus.Signboard.TargetDir)" />
+      </Component>
+      <Component Id="jarvis.bat">
+        <File Id="jarvis.bat" Source="$(var.AppCampus.Signboard.TargetDir)" />
+      </Component>
+      <Component Id="TimetableControls.dll">
+        <File Id="TimetableControls.dll" Source="$(var.AppCampus.Signboard.TargetDir)" />
+      </Component>
+    <Component Id="RegistryEntries">
+      <RegistryKey Root="HKCU"
+                    Key="Software\Microsoft\Windows NT\CurrentVersion\Winlogon"
+                    ForceCreateOnInstall="no" ForceDeleteOnUninstall="no">
+        <RegistryValue Type="string" Name="shell" Value="[LocalAppDataFolder]AppCampus.Signboard\AppCampus.Installer.exe"/>
+      </RegistryKey>
+    </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="ResourcesFolder">
+      <Component Id="CopyImage.png">
+        <File Id="CopyImage.png"  Source="$(var.AppCampus.Signboard.TargetDir)Resources\"  />
+      </Component>
+      <Component Id="RefreshGif.gif">
+        <File Id="RefreshGif.gif" Source="$(var.AppCampus.Signboard.TargetDir)Resources\" />
+      </Component>
+    </DirectoryRef>
+	</Fragment>
+</Wix>

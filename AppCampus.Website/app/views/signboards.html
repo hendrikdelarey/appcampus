@@ -1,0 +1,82 @@
+﻿<section class="content-header">
+    <h1>Signboards</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content signboardcontainer">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Signboards
+                    </h3>
+                    
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="signboards.length==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul> 
+                    </div>
+                </div>
+                <div class="box-body" ng-if="signboards.length==0 && signboards">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="label label-warning">There are no signboards to display</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding" ng-if="signboards && signboards.length!=0">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="col-sm-2 col-xs-5"><strong>Name</strong></th>
+                                <th class="col-sm-2 hidden-xs"><strong>Active Slideshow</strong></th>
+                                <th class="col-sm-2 hidden-xs"><strong>Software</strong></th>
+                                <th class="col-sm-2 hidden-xs"><strong>Last Updated</strong></th>
+                                <th class="col-sm-2 col-xs-6"></th>
+                            </tr>
+                            <tr ng-repeat="signboard in $parent.signboards">
+                                <td>{{ signboard.name }}</td>
+                                <td class="hidden-xs">
+                                    <span ng-class="{'hidden': signboard.activeSlideshowId!=undefined}"><i class="fa fa-spin fa-spinner"></i></span>
+                                    <span ng-show="signboard.activeSlideshowId && signboard.activeSlideshowId!=0 && signboard.activeSlideshowId!='failed' && signboard.activeSlideshowName!='failed'"><a ng-if="signboard.activeSlideshowId!='failed' && signboard.activeSlideshowName!='failed'" href="#/slideshows/{{ signboard.activeSlideshowId }}">{{ signboard.activeSlideshowName }}</a></span>
+                                    <span ng-if="signboard.activeSlideshowId=='failed' || signboard.activeSlideshowName=='failed'" class="text-danger">Failed</span>
+                                    <span ng-if="signboard.activeSlideshowId==0">No Active Slideshow</span>
+                                </td>
+                                <td class="hidden-xs">
+                                    <span ng-if="signboard.softwareVersion && signboard.softwareVersion!=0">v{{ signboard.softwareVersion }}</span>
+                                    <span ng-if="signboard.softwareVersion==undefined"><i class="fa fa-spin fa-spinner"></i></span>
+                                    <span ng-if="signboard.softwareVersion=='failed'" class="danger">Failed</span>
+                                    <span ng-if="signboard.softwareVersion==0">No Version information</span>
+                                </td>
+                                <td class="hidden-xs">
+                                    <span ng-if="signboard.diagnosticDate && signboard.diagnosticDate!=0">{{ dateFormatter.formatDate(signboard.diagnosticDate) }}</span>
+                                    <span ng-if="signboard.diagnosticDate==undefined"><i class="fa fa-spin fa-spinner"></i></span>
+                                    <span ng-if="signboard.diagnosticDate=='danger'" class="warning">Failed</span>
+                                    <span ng-if="signboard.diagnosticDate==0">No Date information</span>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#/signboards/{{ signboard.signboardId }}">View</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

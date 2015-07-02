@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <appSettings>
+    <add key="Key" value="3df3d2ca-8593-4df9-9d78-a3e900bab933"/>
+    <add key="MacAddress" value=""/>
+    <add key="SignboardApi" value="http://localhost:3936/signboardapi/"/>
+    <!--<add key="SignboardApi" value="http://appcampustest.cloudapp.net:82/signboardapi"/>-->
+  </appSettings>
+</configuration>

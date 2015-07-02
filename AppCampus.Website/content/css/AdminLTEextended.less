@@ -1,0 +1,145 @@
+﻿@import "../less/bootstrap-datetimepicker-build";
+
+body, html {
+    overflow: hidden;
+}
+
+.preheader {
+    .table {
+        margin-bottom: 0px;
+    }
+}
+
+.preheader-heading {
+    li {
+        padding-top: 5px;
+        padding-left: 5px;
+    }
+    .appcampus {
+        font-size: x-large;
+        font-weight: bold;
+    }
+    li:nth-child(2) {
+        padding-top:14px;
+    }
+}
+
+.highlight-user-red {
+    font-weight: bold;
+    color: red;
+}
+
+.logo {
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+.entire-screen {
+    position:fixed;
+    padding:0;
+    margin: 0;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    z-index:10000;
+}
+
+.content {
+    height: 100%;
+    overflow: visible;
+}
+
+.right-side > .ng-scope > .content-header > .breadcrumb {
+    float: right;
+    background: transparent;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    padding: 7px 5px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    border-radius: 2px;
+    >li>a {
+        text-decoration:none;
+        color: #444;
+    }
+}
+
+.cover-window {
+    margin:0;
+    padding: 0;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #10ABFD;
+    position:fixed;
+    z-index:10000;
+}
+
+.deleting-modal {
+    position: absolute;
+    z-index: 19001;
+    opacity: 0.8;
+    background-color: #444;
+}
+
+
+/// the loader
+@keyframes jump {
+    0% { width:20px; height: 180px; margin-left:0; margin-top:0; 
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.2), 0 2px 2px rgba(0,0,0,.7); }
+    50% { width:26px; height: 200px; margin-left:-3px; margin-top:-10px; 
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.2), 0 20px 25px rgba(0,0,0,.7); }
+    100% { width:20px; height: 180px; margin-left:0; margin-top:0; 
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.2), 0 2px 2px rgba(0,0,0,.7); }
+}
+
+@-webkit-keyframes jump {
+    0% { width:20px; height: 180px; margin-left:0; margin-top:0; 
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.2), 0 2px 2px rgba(0,0,0,.7); }
+    50% { width:26px; height: 200px; margin-left:-3px; margin-top:-10px; 
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.2), 0 20px 25px rgba(0,0,0,.7); }
+    100% { width:20px; height: 180px; margin-left:0; margin-top:0; 
+      box-shadow: inset 0 1px 1px rgba(255,255,255,.2), 0 2px 2px rgba(0,0,0,.7); }
+}
+
+html {
+    height: 100%;
+}
+
+#loader {
+    position: absolute;
+    left:50%; top:50%;
+    width:300px; 
+    height:180px;
+    margin-left:-150px; margin-top:-90px;
+}
+
+.bar {
+    position: absolute;
+    animation: jump 1s ease infinite;
+    -moz-animation: jump 1s ease infinite;
+    -webkit-animation: jump 1s ease infinite;
+    -o-animation: jump 1s ease infinite;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,.1));
+}
+.bar:nth-child(1) { left: 0; }
+.bar:nth-child(2) { left: 40px; animation-delay: .1s; -webkit-animation-delay: .1s; }
+.bar:nth-child(3) { left: 80px; animation-delay: .2s; -webkit-animation-delay: .2s; }
+.bar:nth-child(4) { left: 120px; animation-delay: .3s; -webkit-animation-delay: .3s; }
+.bar:nth-child(5) { left: 160px; animation-delay: .4s; -webkit-animation-delay: .4s; }
+.bar:nth-child(6) { left: 200px; animation-delay: .5s; -webkit-animation-delay: .5s; }
+.bar:nth-child(7) { left: 240px; animation-delay: .6s; -webkit-animation-delay: .6s; }
+.bar:nth-child(8) { left: 280px; animation-delay: .7s; -webkit-animation-delay: .7s; }
+.bar:nth-child(9) { left: 320px; animation-delay: .8s; -webkit-animation-delay: .8s; }
+
+//below the loader ( loader text)
+#loader-text {
+    width: 100%;
+    position: absolute;
+    top: 60%;
+    text-align:center;
+}

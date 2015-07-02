@@ -1,0 +1,35 @@
+﻿.skin-blue .right-side .ng-scope > .content-header {
+  background: #fbfbfb;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 15px 15px 10px 20px;
+}
+.skin-blue .right-side .ng-scope > .content-header h1 {
+  font-size: 24px;
+  margin: 0px;
+}
+.custom-dropdown-link {
+  cursor: pointer;
+}
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+}
+.fa-clock-o {
+  line-height: inherit;
+}
+.no-padding-left {
+  padding-left: 0;
+  margin-left: 0;
+}
+.no-padding-right {
+  padding-right: 0;
+  margin-right: 0;
+}
+.tab-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+}

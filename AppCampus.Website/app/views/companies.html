@@ -1,0 +1,95 @@
+﻿<section class="content-header">
+    <h1>Companies</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Companies
+                    </h3>
+                    <div class="box-tools ">
+                        <ul class="newloader pull-left" ng-if="companies.length==undefined || companiesLoading || companiesSaving">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <div class="pull-right">
+                            <button class="btn btn-default " data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="unapprovedVisible=true" ng-click="unapprovedVisible=!unapprovedVisible">
+                                <i class="fa fa-plus" ng-class="{'fa-minus': unapprovedVisible, 'fa-plus': !unapprovedVisible}"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding" ng-if="unapprovedVisible">
+                    <table class="table table-hover">
+                        <tr>
+                            <th class="col-xs-11">Company Name</th>
+                            <th class="col-xs-1"></th>
+                        </tr>
+                        <tr ng-repeat="company in companies">
+                            <td>
+                                {{ company.name }}
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                        Action <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="" ng-click="deleteCompany(company)">Delete</a></li>
+                                        <li><a href="" ng-click="cloak(company)">Cloak</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="btn btn-success" ng-click="createCompany()" ng-disabled="companiesSaving">Create <i ng-class="{'fa fa-spinner fa-spin': companiesSaving }"></i></div>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="createCompanyModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Create Company</h3>
+        </div>
+        <form role="form" name="form" ng-submit="ok(form)">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="version">Company Name:</label>
+                    <input type="text" id="version" ng-model="company.name" class="form-control" required focus-input />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" ng-click="ok(form)" value="Create" />
+                <div class="btn btn-warning" ng-click="cancel()">Cancel</div>
+            </div>
+        </form>
+    </script>
+
+    <script type="text/ng-template" id="deleteModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Confirm action:</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">Are you sure you want to delete this item?</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Yes</button>
+            <div class="btn btn-warning" ng-click="cancel()">Cancel</div>
+        </div>
+    </script>
+</section>

@@ -1,0 +1,49 @@
+﻿<section class="content-header">
+    <h1>Signboard</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content signboardcontainer">
+    <!-- unapproved devices-->
+    <div class="row slideshow-schedule">
+        <div class="col-xs-9">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Slideshow Schedule
+                    </h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-default " data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="unapprovedVisible=true" ng-click="unapprovedVisible=!unapprovedVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': unapprovedVisible, 'fa-plus': !unapprovedVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding" ng-hide="!unapprovedVisible" ng-show="unapprovedVisible">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><strong>Name</strong></th>
+                                <th class="col-lg-2 col-md-2 col-sm-1 col-xs-1"><strong>Start Date</strong></th>
+                                <th class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></th>
+                            </tr>
+                        </tbody>
+                    </table>>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row hardware-monitor">
+
+    </div>
+    <div class="row announcements">
+
+    </div>
+    <div class="row software-monitor">
+
+    </div>
+</section>

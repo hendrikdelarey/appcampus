@@ -1,0 +1,9 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\bin\Debug\AppCampus.Database.dacpac
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\bin\Debug\AppCampus.Database.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\bin\Debug\AppCampus.Database.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\obj\Debug\Model.xml
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\obj\Debug\refactor.xml
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\obj\Debug\postdeploy.sql
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\obj\Debug\predeploy.sql
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\obj\Debug\AppCampus.Database.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Database\obj\Debug\AppCampus.Database.pdb

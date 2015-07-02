@@ -1,0 +1,14 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\AppCampus.Domain.Interfaces.dll.config
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\AppCampus.Domain.Interfaces.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\AppCampus.Domain.Interfaces.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\AppCampus.Domain.Models.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\Newtonsoft.Json.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\Drumble.DomainDrivenArchitecture.Domain.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\Drumble.ValueObjects.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\AppCampus.Domain.Models.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\Newtonsoft.Json.xml
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\obj\Debug\AppCampus.Domain.Interfaces.csprojResolveAssemblyReference.cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\obj\Debug\AppCampus.Domain.Interfaces.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Domain.Interfaces\obj\Debug\AppCampus.Domain.Interfaces.pdb

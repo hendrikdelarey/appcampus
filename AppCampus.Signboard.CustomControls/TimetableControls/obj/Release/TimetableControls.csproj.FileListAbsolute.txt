@@ -1,0 +1,11 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\bin\Release\TimetableControls.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\bin\Release\TimetableControls.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\PurpleHazeTimetableControl.baml
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\PurpleHazeTimetableControl.g.cs
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\TimetableControls_MarkupCompile.cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\TimetableControls.g.resources
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\TimetableControls.Properties.Resources.resources
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\TimetableControls.csproj.GenerateResource.Cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\TimetableControls.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\TimetableControls.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TimetableControls\obj\Release\TimetableControls.csprojResolveAssemblyReference.cache

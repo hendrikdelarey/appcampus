@@ -1,0 +1,6 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Installer\bin\Debug\AppCampus.Installer.msi
+C:\Workspace\AppCampus\Trunk\AppCampus.Installer\bin\Debug\AppCampus.Installer.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\AppCampus.Installer.wixproj.BindContentsFileListnull.txt
+obj\Debug\AppCampus.Installer.wixproj.BindOutputsFileListnull.txt
+obj\Debug\AppCampus.Installer.wixproj.BindBuiltOutputsFileListnull.txt

@@ -1,0 +1,160 @@
+﻿<section class="content-header">
+    <h1>Devices</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content signboardcontainer">
+    <!-- unapproved devices-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Unapproved Devices
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="devices.length==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="collapse" title="" data-original-title="collapse" ng-init="unapprovedVisible=true" ng-click="unapprovedVisible=!unapprovedVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': unapprovedVisible, 'fa-plus': !unapprovedVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="devices.length==0">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="label label-warning">There are no unapproved devices</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding" ng-if="unapprovedVisible && devices.length!=0">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="col-xs-3"><strong>Mac Address</strong></th>
+                                <th class="col-xs-3 hidden-xs"><strong>Request Date</strong></th>
+                                <th class="col-xs-2"><strong>State</strong></th>
+                                <th class="col-xs-2 hidden-xs"><strong>Comment</strong></th>
+                                <th class="col-xs-2"></th>
+                            </tr>
+                            <tr ng-repeat="device in devices | orderBy:orderDevices" ng-if="device.state!='Approved'" ng-model="selectedModelA">
+                                <td> {{ device.macAddress }}</td>
+                                <td class="hidden-xs"> {{ formatDate(device.lastRequestDate) }}</td>
+                                <td>
+                                    <label class="label" ng-class="{
+                                           'label-success':device.state == 'Approved',
+                                           'label-danger' :device.state == 'Declined',
+                                           'label-primary':device.state == 'Pending',
+                                           'label-default':device.state == 'Blocked',
+                                           }">{{ device.state }}</label>
+                                </td>
+                                <td class="hidden-xs">{{ device.comment }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a class="nav" ng-click="open('', device)">Approve</a></li>
+                                            <li><a class="nav" ng-click="decline(device)">Decline</a></li>
+                                            <li><a class="nav" ng-click="block(device)">Block</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- approved devices -->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box" ng-class="{'collapsed-box': !approvedVisible}">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Approved Devices
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="devices.length==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+
+                        <button class="btn btn-default pull-right" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse" ng-init="approvedVisible=true" ng-click="approvedVisible=!approvedVisible">
+                            <i class="fa fa-plus" ng-class="{'fa-minus': approvedVisible, 'fa-plus': !approvedVisible}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="devices.length==0">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="label label-warning">You have no approved devices</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding" ng-if="approvedVisible && devices.length!=0">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="col-xs-3"><strong>Mac Address</strong></th>
+                                <th class="col-xs-3 hidden-xs"><strong>Update Date</strong></th>
+                                <th class="col-xs-2"><strong>State</strong></th>
+                                <th class="col-xs-2 hidden-xs"><strong>Comment</strong></th>
+                                <th class="col-xs-2"></th>
+                            </tr>
+                            <tr ng-repeat="device in devices" ng-if="device.state=='Approved'">
+                                <td> {{ device.macAddress }}</td>
+                                <td class="hidden-xs"> {{ formatDate(device.lastRequestDate) }}</td>
+                                <td>
+                                    <label class="label" ng-class="{
+                                           'label-success':device.state == 'Approved',
+                                           'label-danger' :device.state == 'Declined',
+                                           'label-primary':device.state == 'Pending',
+                                           'label-default':device.state == 'Blocked',
+                                           }">{{ device.state }}</label>
+                                </td>
+                                <td class="hidden-xs">{{ device.comment }}</td>
+                                <td class=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-header">
+                <h3 class="modal-title">New Signboard:</h3>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="ok()">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Signboard name: <span class="label label-danger" ng-bind="warningText"></span></label>
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" ng-model="signboardName" focus-input/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </script>
+    </div>
+</section>

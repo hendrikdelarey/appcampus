@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>2.5</ProductVersion>
+    <ProjectGuid>e673aab5-5987-4768-b401-f5d17141cde1</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppCampus.Cloud</RootNamespace>
+    <AssemblyName>AppCampus.Cloud</AssemblyName>
+    <StartDevelopmentStorage>True</StartDevelopmentStorage>
+    <Name>AppCampus.Cloud</Name>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <UseWebProjectPorts>True</UseWebProjectPorts>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- Items for the project -->
+  <ItemGroup>
+    <ServiceConfiguration Include="ServiceConfiguration.Test.cscfg" />
+    <ServiceConfiguration Include="ServiceConfiguration.Prod.cscfg" />
+    <ServiceDefinition Include="ServiceDefinition.csdef" />
+    <ServiceConfiguration Include="ServiceConfiguration.Local.cscfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ServiceDefinition.Local.csdef" />
+    <Content Include="ServiceDefinition.Test.csdef" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppCampus.PortalApiContent" />
+    <Folder Include="Profiles" />
+  </ItemGroup>
+  <ItemGroup>
+    <DiagnosticsConfiguration Include="AppCampus.PortalApiContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\Test.azurePubxml" />
+    <PublishProfile Include="Profiles\Prod.azurePubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppCampus.PortalApi\AppCampus.PortalApi.csproj">
+      <Name>AppCampus.PortalApi</Name>
+      <Project>{692196f2-d30b-4baf-bdc9-f30f11c644e9}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>AppCampus.PortalApi</RoleName>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetProfile Condition="'$(TargetProfile)' == ''">Local</TargetProfile>
+  </PropertyGroup>
+  <!-- Import the target files for this project template -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\2.5\</CloudExtensionsDir>
+    <ServiceDefinitionTransform>ServiceDefinition.$(TargetProfile).csdef</ServiceDefinitionTransform>
+    <TransformRunnerExecutable>$(MSBuildProjectDirectory)\..\packages\WebConfigTransformRunner.1.0.0.1\Tools\WebConfigTransformRunner.exe</TransformRunnerExecutable>
+  </PropertyGroup>
+  <Import Project="$(CloudExtensionsDir)Microsoft.WindowsAzure.targets" />
+  <!-- Execute Transformation. -->
+  <Target Name="AfterValidateServiceModel">
+    <Message Text="AfterValidateServiceModel (TargetProfile=$(TargetProfile))" Importance="high" />
+    <Message Text=" - TransformRunnerExecutable: $(TransformRunnerExecutable)" Importance="high" />
+    <Message Text=" - ServiceDefinitionTransform: $(ServiceDefinitionTransform)" Importance="high" />
+    <Message Text=" - Executing Transform: &quot;$(TransformRunnerExecutable)&quot; @(TargetServiceDefinition) $(ServiceDefinitionTransform) @(TargetServiceDefinition)" Importance="high" />
+    <Exec Command="&quot;$(TransformRunnerExecutable)&quot; @(TargetServiceDefinition) $(ServiceDefinitionTransform) @(TargetServiceDefinition)" />
+  </Target>
+</Project>

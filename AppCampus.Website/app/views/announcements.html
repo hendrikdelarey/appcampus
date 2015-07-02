@@ -1,0 +1,101 @@
+﻿<section class="content-header">
+    <h1>Announcements</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content signboardcontainer">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Announcements
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="announcements.length==undefined || deletingAnnouncement">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="announcements.length==0">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="label label-warning">There are no announcemnts to display</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding" ng-if="announcements.length!=0">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="col-lg-5"><strong>Name</strong></th>
+                                <th class="col-lg-1 hidden-xs"><strong>Active</strong></th>
+                                <th class="col-lg-1"><strong>Type</strong></th>
+                                <th class="col-lg-2 hidden-xs"><strong>Start Date</strong></th>
+                                <th class="col-lg-2 hidden-xs"><strong>End Date</strong></th>
+                                <th></th>
+                            </tr>
+                            <tr ng-repeat="announcement in announcements" ng-class="{'warning': announcement.deletingAnnouncement }">
+                                <td>{{ announcement.name }}</td>
+                                <td class="hidden-xs">
+                                    <label ng-if="announcement.isActive">Yes</label>
+                                    <label ng-if="!announcement.isActive" class="text-danger">No</label>
+                                </td>
+                                <td>
+                                    <label class="label text-center" ng-class="{
+                                           'label-danger' : announcement.severity == 'Critical',
+                                           'label-success': announcement.severity == 'General'
+                                           }">{{ announcement.severity }}</label>
+                                </td>
+                                <td class="hidden-xs">{{ formatDate(announcement.startDate) }}</td>
+                                <td class="hidden-xs">{{ formatDate(announcement.endDate) }}</td>
+                                <td>
+                                    <div class="btn-group" ng-if="!announcement.deletingAnnouncement">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#/announcements/{{ announcement.announcementId }}">View</a></li>
+                                            <li>
+                                                <a href="" ng-click="disableAnnouncement(announcement)" ng-if="announcement.isActive==true">Disable</a>
+                                                <a href="" ng-click="enableAnnouncement(announcement)" ng-if="announcement.isActive==false">Enable</a>
+                                            </li>
+                                            <li><a href="" ng-click="deleteAnnouncement(announcement)">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1">
+            <a class="btn btn-success" href="#/announcements/new">Create</a>
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="deleteModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Confirm action:</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-xs-12">Are you sure you want to delete this item?</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">Yes</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</section>

@@ -1,0 +1,128 @@
+﻿<section class="content-header">
+    <h1>User</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+            <i class="fa fa-chevron-right"></i>
+            <a href="#/users">
+                <i class="fa fa-calendar"></i> Users
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- User details Section -->
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Users</h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="user==undefined">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form role="form" ng-submit="updateUserDetails(userDetailsForm)" name="userDetailsForm">
+                        <div class="form-group">
+                            <label for="username">Email address:</label>
+                            <input type="email" class="form-control" ng-model="user.userName" id="username" ng-disabled="!createUser" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname">First Name:</label>
+                            <input type="text" class="form-control" ng-model="user.firstName" id="firstname" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" class="form-control" ng-model="user.lastName" id="lastname" required />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" hidden />
+                            <div class="btn btn-success" ng-if="createUser" ng-disabled="savingUser" ng-click="updateUserDetails(userDetailsForm)">Create <i class="" ng-class="{'fa fa-spinner fa-spin': savingUser }"></i></div>
+                            <div class="btn btn-primary" ng-if="!createUser" ng-disabled="savingUser" ng-click="updateUserDetails(userDetailsForm)">Update <i class="" ng-class="{'fa fa-spinner fa-spin': savingUser }"></i></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Password Section -->
+        <div class="col-xs-12" ng-if="!createUser">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Password</h3>
+                </div>
+                <div class="box-body">
+                    <form role="form" ng-submit="resetUserPassword(passwordForm)" name="passwordForm">
+                        <div class="form-group">
+                            <div class="btn btn-primary" ng-click="resetUserPassword(passwordForm)" ng-disabled="resettingPassword">Reset Password* <i ng-class="{'fa fa-spinner fa-spin': resettingPassword }"></i></div>
+                        </div>
+                        <div class="form-group">
+                            <span>*The user will be notified by email</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roles Section -->
+        <div class="col-xs-12" ng-if="!createUser">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Roles</h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="roles==undefined || deletingRole">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="roleselector">Role:</label>
+                            <select ng-options="role.roleId as role.roleName for role in filteredRoles = (roles | filter:filterRoles)" ng-model="$parent.selectedRole" class="form-control" ng-disabled="filteredRoles.length==0"></select>
+                        </div>
+                        <div class="form-group">
+                            <div class="btn btn-success" ng-click="assignRole()" ng-disabled="selectedRole==undefined || savingRoles">Assign <i ng-class="{'fa fa-spinner fa-spin': savingRoles }"></i></div>
+                        </div>
+                    </form>
+                    <div class="row" ng-if="userRoles.length==0">
+                        <div class="col-xs-12">
+                            <label class="label label-info">This user has no roles assigned. Consider assigning some roles.</label>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-bordered" ng-if="userRoles.length!=undefined && userRoles.length > 0">
+                        <tr>
+                            <td class="col-xs-9"><strong>Assigned Role</strong></td>
+                            <td class="col-xs-3"></td>
+                        </tr>
+
+                        <tr ng-repeat="role in userRoles" ng-class="{'warning': role.deleting }">
+                            <td>{{ role.roleName }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                        Action <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="" ng-click="removeRole(role)">Remove</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

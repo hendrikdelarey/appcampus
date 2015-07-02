@@ -1,0 +1,11 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\bin\Debug\Screensaver.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\bin\Debug\Screensaver.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\Screensaver.csprojResolveAssemblyReference.cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\ScreensaverControl.baml
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\ScreensaverControl.g.cs
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\Screensaver_MarkupCompile.cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\Screensaver.g.resources
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\Screensaver.Properties.Resources.resources
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\Screensaver.csproj.GenerateResource.Cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\Screensaver.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\Screensaver\obj\Debug\Screensaver.pdb

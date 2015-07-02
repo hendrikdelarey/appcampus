@@ -1,0 +1,10 @@
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\bin\Release\TextWidget.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\bin\Release\TextWidget.pdb
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\CenteredTextControl.baml
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\CenteredTextControl.g.cs
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\TextWidget_MarkupCompile.cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\TextWidget.g.resources
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\TextWidget.Properties.Resources.resources
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\TextWidget.csproj.GenerateResource.Cache
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\TextWidget.dll
+C:\Workspace\AppCampus\Trunk\AppCampus.Signboard.CustomControls\TextWidget\obj\Release\TextWidget.pdb

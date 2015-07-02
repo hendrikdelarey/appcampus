@@ -1,0 +1,102 @@
+﻿<section class="content-header">
+    <h1>Slideshows</h1>
+    <ol class="breadcrumb hidden-xs hidden-sm">
+        <li>
+            <a href="#/">
+                <i class="fa fa-dashboard"></i> Home
+            </a>
+        </li>
+    </ol>
+</section>
+<section class="content signboardcontainer">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Slideshows
+                    </h3>
+                    <div class="box-tools">
+                        <ul class="newloader pull-left" ng-if="slideshows.length==undefined || removingSlideshow">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="box-body" ng-if="slideshows.length==0">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="label label-warning">There are no slideshows to display</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body no-padding" ng-if="slideshows.length!=0">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="col-xs-10">Name</th>
+                                <th class="col-xs-2"></th>
+                            </tr>
+                            <tr ng-repeat="slideshow in $parent.slideshows" ng-class="{'warning': slideshow.removing }">
+                                <td>{{ slideshow.name }}</td>
+                                <td ng-if="slideshow.removing==undefined || slideshow.removing==false">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-expanded="false" class="custom-dropdown-link">
+                                            Action <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#/slideshows/{{ slideshow.slideshowId }}">View</a></li>
+                                            <li><a href="" ng-click="$parent.deleteSlideshow(slideshow)">Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td ng-if="slideshow.removing"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <a class="btn btn-success" href="" ng-click="create()">Create</a>
+        </div>
+        <div>
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Name the slideshow: <span ng-bind="slideshowName"></span></h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Slideshow name: <span class="label label-danger" ng-bind="warningText"></span></label>
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control" ng-model="slideshowName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="deleteModal.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Confirm action:</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                       <div class="col-xs-12">Are you sure you want to delete this item?</div> 
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok()">Yes</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+        </div>
+    </div>
+</section>
